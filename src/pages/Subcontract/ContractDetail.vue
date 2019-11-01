@@ -1,6 +1,11 @@
 <template>
   <div class="Contract">
-    <h2 class="MarginT_20 MarginB_20">合同（应付）</h2>
+    <el-breadcrumb separator-class="el-icon-arrow-right" class="MarginT_10">
+      <el-breadcrumb-item :to="{ path: '/ContractList' }">分包合同列表</el-breadcrumb-item>
+      <el-breadcrumb-item>详情</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-divider></el-divider>
+    <!-- <h2 class="MarginB_20">合同（应付）</h2> -->
     <el-row class="MarginT_20">
       <el-form class="formContract" ref="formContract" :rules="rules" label-position="left" :model="formContract" label-width="80px" size="small" style="padding: 10px;">
         <el-col :span="24">
@@ -467,7 +472,7 @@
       <el-button type="success" size="mini" @click="exportExcel">材料明细导出</el-button>
     </section>
     <!-- 施工费用 -->
-    <el-dialog
+    <!-- <el-dialog
       title="施工费用"
       :visible.sync="dialogVisibleSGFY"
       fullscreen>
@@ -475,7 +480,7 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisibleSGFY = false">关 闭</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
     <!-- 导入Excel -->
     <!-- <el-upload
       class="upload-demo"
@@ -572,7 +577,7 @@ export default {
         '施工合同': {'施工合同': []},
         '付款申请单': {'付款申请单': []}
       },
-      dialogVisibleSGFY: false,
+      // dialogVisibleSGFY: false,
       exportData: []
     }
   },
@@ -627,7 +632,8 @@ export default {
       this.$router.push({name: 'ContractList'})
     },
     showSGFY () {
-      this.dialogVisibleSGFY = true
+      this.$router.push({name: 'ContractFee'})
+      // this.dialogVisibleSGFY = true
     },
     async exportExcel () {
       console.log(this.exportData)
@@ -663,7 +669,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>select top 50 fitemid,fname from t_supplier where fname like '%" + val + "%' order by fnumber</FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from t_supplier where fname like '%" + val + "%' order by fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -697,7 +703,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>select top 50 fitemid,fname from t_department where fname like '%" + val + "%' order by fnumber</FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from t_department where fname like '%" + val + "%' order by fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -731,7 +737,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>select top 50 fitemid,fname from t_emp where fname like '%" + val + "%' order by fnumber</FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from t_emp where fname like '%" + val + "%' order by fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -765,7 +771,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>select top 50 fitemid,fname from t_Item where fitemclassid=3001 and fname like '%" + val + "%' order by fnumber</FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from t_Item where fitemclassid=3001 and fname like '%" + val + "%' order by fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -798,7 +804,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += '<FSQL>select fitemid,fname from t_Item where fitemclassid=3004</FSQL>'
+      tmpData += '<FSQL><![CDATA[select fitemid,fname from t_Item where fitemclassid=3004]]></FSQL>'
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -828,7 +834,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += '<FSQL>select fname,fitemid from t_item where fitemclassid=3002</FSQL>'
+      tmpData += '<FSQL><![CDATA[select fname,fitemid from t_item where fitemclassid=3002]]></FSQL>'
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -859,7 +865,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>select top 50 a.fitemid,a.fnumber,a.fname,a.fmodel,b.fname funit from t_icitem a inner join t_MeasureUnit b on a.funitid=b.fitemid  where a.fname like '%" + val + "%' order by a.fnumber</FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 a.fitemid,a.fnumber,a.fname,a.fmodel,b.fname funit from t_icitem a inner join t_MeasureUnit b on a.funitid=b.fitemid  where a.fname like '%" + val + "%' order by a.fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -1398,7 +1404,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += "<FSQL>select FContractNo 合同号,FType 阶段,'http://zicpp.zicp.vip:59215/zetian_file/'+fcontractno+'/'+fpath 文件路径 from z_file_pay where FContractNo='" + this.formContract.contractNo + "' and ftype='" + Ftype + "'</FSQL>"
+      tmpData += "<FSQL><![CDATA[select FContractNo 合同号,FType 阶段,'http://zicpp.zicp.vip:59215/zetian_file/'+fcontractno+'/'+fpath 文件路径 from z_file_pay where FContractNo='" + this.formContract.contractNo + "' and ftype='" + Ftype + "']]></FSQL>"
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'

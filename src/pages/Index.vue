@@ -1,7 +1,10 @@
 <template>
-  <div class="Module">
-    欢迎登陆泽天工程系统
-    <!-- <div class="Item" style="margin-top: 40px;" @click="goModule(0)">
+  <div class="Index">
+    <p class="NoAuthor">欢 迎 登 陆 泽 天 项 目 工 程 系 统</p>
+    <img src="../../static/image/zt.png" style="width: 30%;"/>
+  </div>
+  <!-- <div class="Module">
+    <div class="Item" style="margin-top: 40px;" @click="goModule(0)">
       工程合同监控
     </div>
     <div class="Item" @click="goModule(1)">
@@ -9,8 +12,8 @@
     </div>
     <div class="Item" @click="goModule(2)">
       项目决算表
-    </div> -->
-  </div>
+    </div>
+  </div> -->
 </template>
 
 <script>
@@ -40,6 +43,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
+  .Index p{
+    font-size: 32px;
+    font-weight: bold;
+  }
   .Module{
     width: 100%;
     text-align: center;

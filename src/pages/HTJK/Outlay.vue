@@ -1,13 +1,14 @@
 <template>
   <div class="Outlay">
+    <!-- <H1>费 用</H1> -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="MarginT_10">
-      <el-breadcrumb-item :to="{ path: '/ContractList' }">分包合同列表</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{ path: '/ContractDetail' }">详情</el-breadcrumb-item>
-      <el-breadcrumb-item>施工费用</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/FilterTable' }">项目进度管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/InfoDynamicTable' }">项目进度详情</el-breadcrumb-item>
+      <el-breadcrumb-item>项目进度费用</el-breadcrumb-item>
     </el-breadcrumb>
     <el-divider></el-divider>
     <el-button id="excelBt" style="float:right;margin: 10px;" type="primary" size="small" @click="exportExcel">导 出</el-button>
-    <el-table id="tableBlock"
+    <el-table
       ref="OutlayTable"
       :data="outlayList"
       :height="tableHieght"
@@ -50,12 +51,6 @@
         property="F6"
         label="收款单位"
         width="200"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        property="F15"
-        label="施工队"
-        width="120"
         show-overflow-tooltip>
       </el-table-column>
       <el-table-column
@@ -105,11 +100,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 // import { Loading } from 'element-ui'
 // import $ from 'jquery'
 export default {
   name: 'Outlay',
-  props: ['projectCode', 'constructionTeam'],
   data () {
     return {
       loading: false,
@@ -117,13 +112,18 @@ export default {
       outlayList: []
     }
   },
+  computed: {
+    ...mapState({
+      cuXMMC: state => state.cuXMMC
+    })
+  },
   created () {
+    this.getOutlayList()
     setTimeout(() => {
       let height = document.documentElement.clientHeight
       let btHeight = document.getElementById('excelBt').offsetHeight
       this.tableHieght = height - 42 - btHeight - 100
     }, 0)
-    this.getOutlayList()
   },
   methods: {
     // 返回
@@ -136,7 +136,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += "<FSQL><![CDATA[select * from zz_fee where f11='" + this.projectCode + "' and F15='" + this.constructionTeam + "']]></FSQL>"
+      tmpData += "<FSQL><![CDATA[select * from zz_fee where f11='" + this.cuXMMC + "']]></FSQL>"
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -191,10 +191,10 @@ export default {
     exportExcel () {
       require.ensure([], () => {
         const { exportJsonToExcel } = require('../../vendor/Export2Excel.js')
-        const tHeader = ['单据编号', '申请日期', '事由', '申请人', '申请部门', '收款单位', '施工队', '发生日期', '费用项目', '申请费用金额', '核算项目', '项目编号', '摘要', '备注']
-        const filterVal = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F15', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13']
+        const tHeader = ['单据编号', '申请日期', '事由', '申请人', '申请部门', '收款单位', '发生日期', '费用项目', '申请费用金额', '核算项目', '项目编号', '摘要', '备注']
+        const filterVal = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13']
         const data = this.formatJson(filterVal, this.outlayList)
-        exportJsonToExcel(tHeader, data, '施工费用')
+        exportJsonToExcel(tHeader, data, '项目进度费用')
       })
     },
     formatJson (filterVal, jsonData) {

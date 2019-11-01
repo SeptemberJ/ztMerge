@@ -1,164 +1,167 @@
 <template>
   <div class="ContractList">
-    <el-row style="margin: 20px 0 0 0;">
-      <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="项目编号" size="mini">
-          <el-input v-model="filterProjectCode" size="mini" placeholder="请输入项目编号" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="施工队" size="mini">
-          <el-input v-model="filterConstructionTeam" size="mini" placeholder="请输入施工队" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="公司名称" size="mini">
-          <el-input v-model="filterCompanyName" size="mini" placeholder="请输入公司名称" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="" size="mini">
+     <h2 v-if="userInfo.F_121 != 'True'" class="NoAuthor">对不起，您没有查看该模块的权限！</h2>
+     <div v-else>
+      <el-row style="margin: 20px 0 0 0;">
+        <el-form :inline="true" class="demo-form-inline">
+          <el-form-item label="项目编号" size="mini">
+            <el-input v-model="filterProjectCode" size="mini" placeholder="请输入项目编号" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="施工队" size="mini">
+            <el-input v-model="filterConstructionTeam" size="mini" placeholder="请输入施工队" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="公司名称" size="mini">
+            <el-input v-model="filterCompanyName" size="mini" placeholder="请输入公司名称" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="" size="mini">
+            <el-button type="primary" size="mini" icon="el-icon-search" @click="getData">搜 索</el-button>
+          </el-form-item>
+        </el-form>
+        <!-- <el-col :span="6" :offset="8">
+          <el-input v-model="projectCode" size="mini" clearable placeholder="请输入要查询的项目编号"></el-input>
+        </el-col>
+        <el-col :span="3">
           <el-button type="primary" size="mini" icon="el-icon-search" @click="getData">搜 索</el-button>
-        </el-form-item>
-      </el-form>
-      <!-- <el-col :span="6" :offset="8">
-        <el-input v-model="projectCode" size="mini" clearable placeholder="请输入要查询的项目编号"></el-input>
-      </el-col>
-      <el-col :span="3">
-        <el-button type="primary" size="mini" icon="el-icon-search" @click="getData">搜 索</el-button>
-      </el-col> -->
-    </el-row>
-    <el-row style="margin-bottom: 20px;text-align: right;padding-right: 10px;">
-      <el-button type="success" size="mini" icon="el-icon-printer" @click="exportExcel">导 出</el-button>
-      <el-button type="danger" size="mini" icon="el-icon-plus" @click="addContract">新 增</el-button>
-    </el-row>
-    <el-table
-      id="tableBlock"
-      v-loading="loading"
-      :data="tableData"
-      :height="tableHieght - 180"
-      @row-dblclick="toDetail"
-      style="width: 100%">
-      <el-table-column
-        type="index"
-        fixed
-        width="50">
-      </el-table-column>
-      <el-table-column
-        prop="合同日期"
-        label="合同日期"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="合同号"
-        label="合同号"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="项目编号"
-        label="项目编号"
-        width="300"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="施工队"
-        label="施工队"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="安装费"
-        label="安装金额"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="材料金额"
-        label="材料金额"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="材料结算"
-        label="材料结算"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="价税合计"
-        label="合计"
-        width="100"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="已付金额"
-        label="已付金额"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="剩余应付"
-        label="剩余应付"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="已付比例"
-        label="已付比例"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <!-- <el-table-column
-        prop="剩余未付"
-        label="剩余未付"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column> -->
-      <el-table-column
-        prop="合同名称"
-        label="合同名称"
-        width="250"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="所属公司"
-        label="所属公司"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="部门"
-        label="部门"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-        prop="业务员"
-        label="业务员"
-        width="120"
-        show-overflow-tooltip>
-      </el-table-column>
-      <!-- <el-table-column
-        prop="公司名称"
-        label="公司名称"
-        width="150"
-        show-overflow-tooltip>
-      </el-table-column> -->
-      <el-table-column
-        fixed="right"
-        label="操作"
-        width="180">
-        <template slot-scope="scope">
-          <!-- <el-button type="danger" size="mini" v-if="scope.row['合同号'] != '合计'" @click="del(scope.row.FInterID)">删 除</el-button> -->
-          <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="primary" size="mini" @click="examine(scope.row.FInterID, '审核')">审 核</el-button>
-          <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="danger" size="mini" @click="del(scope.row.FInterID)">删 除</el-button>
-          <el-button v-if="scope.row['审核状态'] == '已审核' && scope.row['合同号'] != '合计'" type="warning" size="mini" @click="examine(scope.row.FInterID, '反审核')">反审核</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-pagination v-if="tableData.length > 0" style="margin: 10px 0;"
-      @current-change="getData"
-      :current-page.sync="curPage"
-      :page-size="pageSize"
-      layout="total, prev, pager, next, jumper"
-      :total="sum">
-    </el-pagination>
+        </el-col> -->
+      </el-row>
+      <el-row style="margin-bottom: 20px;text-align: right;padding-right: 10px;">
+        <el-button type="success" size="mini" icon="el-icon-printer" @click="exportExcel">导 出</el-button>
+        <el-button type="danger" size="mini" icon="el-icon-plus" @click="addContract">新 增</el-button>
+      </el-row>
+      <el-table
+        id="tableBlock"
+        v-loading="loading"
+        :data="tableData"
+        :height="tableHieght - 180"
+        @row-dblclick="toDetail"
+        style="width: 100%">
+        <el-table-column
+          type="index"
+          fixed
+          width="50">
+        </el-table-column>
+        <el-table-column
+          prop="合同日期"
+          label="合同日期"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="合同号"
+          label="合同号"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="项目编号"
+          label="项目编号"
+          width="300"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="施工队"
+          label="施工队"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="安装费"
+          label="安装金额"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="材料金额"
+          label="材料金额"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="材料结算"
+          label="材料结算"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="价税合计"
+          label="合计"
+          width="100"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="已付金额"
+          label="已付金额"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="剩余应付"
+          label="剩余应付"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="已付比例"
+          label="已付比例"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <!-- <el-table-column
+          prop="剩余未付"
+          label="剩余未付"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column> -->
+        <el-table-column
+          prop="合同名称"
+          label="合同名称"
+          width="250"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="所属公司"
+          label="所属公司"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="部门"
+          label="部门"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="业务员"
+          label="业务员"
+          width="120"
+          show-overflow-tooltip>
+        </el-table-column>
+        <!-- <el-table-column
+          prop="公司名称"
+          label="公司名称"
+          width="150"
+          show-overflow-tooltip>
+        </el-table-column> -->
+        <el-table-column
+          fixed="right"
+          label="操作"
+          width="180">
+          <template slot-scope="scope">
+            <!-- <el-button type="danger" size="mini" v-if="scope.row['合同号'] != '合计'" @click="del(scope.row.FInterID)">删 除</el-button> -->
+            <el-button :disabled="userInfo.F_124 != 'True'" v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="primary" size="mini" @click="examine(scope.row.FInterID, '审核')">审 核</el-button>
+            <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="danger" size="mini" @click="del(scope.row.FInterID)">删 除</el-button>
+            <el-button :disabled="userInfo.F_125 != 'True'" v-if="scope.row['审核状态'] == '已审核' && scope.row['合同号'] != '合计'" type="warning" size="mini" @click="examine(scope.row.FInterID, '反审核')">反审核</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <el-pagination v-if="tableData.length > 0" style="margin: 10px 0;"
+        @current-change="getData"
+        :current-page.sync="curPage"
+        :page-size="pageSize"
+        layout="total, prev, pager, next, jumper"
+        :total="sum">
+      </el-pagination>
+     </div>
   </div>
 </template>
 

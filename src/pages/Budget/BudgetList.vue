@@ -1,154 +1,157 @@
 <template>
   <div class="BudgetList">
-    <el-row style="margin: 20px 0 0 0;">
-      <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="公司名称" size="mini">
-          <el-input v-model="filterCompanyName_budget" size="mini" placeholder="请输入公司名称" clearable style="width: 150px;"></el-input>
-        </el-form-item>
-        <el-form-item label="事业部" size="mini">
-          <el-input v-model="filterDepartment_budget" size="mini" placeholder="请输入事业部" clearable style="width: 150px;"></el-input>
-        </el-form-item>
-        <el-form-item label="预算月" size="mini">
-          <el-select v-model="filterMonth_budget" size="mini" placeholder="请选择" style="width: 100px;">
-            <el-option
-              v-for="item in monthOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="业务员" size="mini">
-          <el-input v-model="filterSalesMan_budget" size="mini" placeholder="请输入业务员" clearable style="width: 130px;"></el-input>
-        </el-form-item>
-        <el-form-item label="项目名称" size="mini">
-          <el-input v-model="filterProjectName_budget" size="mini" placeholder="请输入项目名称" clearable style="width: 150px;"></el-input>
-        </el-form-item>
-        <el-form-item label="" size="mini">
-          <el-button type="primary" size="mini" icon="el-icon-search" @click="search">搜 索</el-button>
-        </el-form-item>
-      </el-form>
-    </el-row>
-    <el-row style="margin-bottom: 20px;text-align: right;padding-right: 10px;">
-      <el-button type="success" size="mini" icon="el-icon-printer" @click="exportExcel">导 出</el-button>
-      <el-button type="danger" size="mini" icon="el-icon-plus" @click="addBudget">新 增</el-button>
-    </el-row>
-    <el-table
-      id="tableBlock"
-      v-loading="loading"
-      :data="tableData"
-      :height="tableHieght - 180"
-      @row-dblclick="toDetail"
-      style="width: 100%">
-      <el-table-column
-        type="index"
-        fixed
-        width="50">
-      </el-table-column>
-      <el-table-column
-        prop="公司名称"
-        label="公司名称"
-        width="150">
-      </el-table-column>
-      <el-table-column
-        prop="项目名称"
-        label="项目名称"
-        width="200">
-      </el-table-column>
-      <el-table-column
-        prop="项目合同总价"
-        label="项目合同总价"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="预算毛利"
-        label="预算毛利"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="预算毛利率"
-        label="预算毛利率"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="决算金额"
-        label="决算金额"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="决算毛利"
-        label="决算毛利"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="决算毛利率"
-        label="决算毛利率"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="项目类别"
-        label="项目类别"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="销售员"
-        label="销售员"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="部门"
-        label="部门"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="公司名称"
-        label="公司名称"
-        width="150">
-      </el-table-column>
-      <el-table-column
-        prop="预算设备及材料"
-        label="预算设备及材料"
-        width="140">
-      </el-table-column>
-      <el-table-column
-        prop="预算安装"
-        label="预算安装"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="预算费用"
-        label="预算费用"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="决算设备及材料"
-        label="决算设备及材料"
-        width="140">
-      </el-table-column>
-      <el-table-column
-        prop="决算安装"
-        label="决算安装"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        fixed="left"
-        label="操作"
-        width="160">
-        <template slot-scope="scope">
-          <!-- <el-button type="danger" size="mini" v-if="scope.row['合同号'] != '合计'" @click="del(scope.row.finterid)">删 除</el-button> -->
-          <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="primary" size="mini" @click="examine(scope.row.finterid, '审核')">审 核</el-button>
-          <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="danger" size="mini" @click="del(scope.row.finterid)">删 除</el-button>
-          <el-button v-if="scope.row['审核状态'] == '已审核' && scope.row['合同号'] != '合计'" type="warning" size="mini" @click="examine(scope.row.finterid, '反审核')">反审核</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-pagination v-if="tableData.length > 0" style="margin: 10px 0;"
-      @current-change="getData"
-      :current-page.sync="curPage"
-      :page-size="pageSize"
-      layout="total, prev, pager, next, jumper"
-      :total="sum">
-    </el-pagination>
+    <h2 v-if="userInfo.F_120 != 'True'" class="NoAuthor">对不起，您没有查看该模块的权限！</h2>
+    <div v-else>
+      <el-row style="margin: 20px 0 0 0;">
+        <el-form :inline="true" class="demo-form-inline">
+          <el-form-item label="公司名称" size="mini">
+            <el-input v-model="filterCompanyName_budget" size="mini" placeholder="请输入公司名称" clearable style="width: 150px;"></el-input>
+          </el-form-item>
+          <el-form-item label="事业部" size="mini">
+            <el-input v-model="filterDepartment_budget" size="mini" placeholder="请输入事业部" clearable style="width: 130px;"></el-input>
+          </el-form-item>
+          <el-form-item label="预算月" size="mini">
+            <el-select v-model="filterMonth_budget" size="mini" placeholder="请选择" style="width: 100px;">
+              <el-option
+                v-for="item in monthOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="业务员" size="mini">
+            <el-input v-model="filterSalesMan_budget" size="mini" placeholder="请输入业务员" clearable style="width: 120px;"></el-input>
+          </el-form-item>
+          <el-form-item label="项目名称" size="mini">
+            <el-input v-model="filterProjectName_budget" size="mini" placeholder="请输入项目名称" clearable style="width: 140px;"></el-input>
+          </el-form-item>
+          <el-form-item label="" size="mini">
+            <el-button type="primary" size="mini" icon="el-icon-search" @click="search">搜 索</el-button>
+          </el-form-item>
+        </el-form>
+      </el-row>
+      <el-row style="margin-bottom: 20px;text-align: right;padding-right: 10px;">
+        <el-button type="success" size="mini" icon="el-icon-printer" @click="exportExcel">导 出</el-button>
+        <el-button type="danger" size="mini" icon="el-icon-plus" @click="addBudget">新 增</el-button>
+      </el-row>
+      <el-table
+        id="tableBlock"
+        v-loading="loading"
+        :data="tableData"
+        :height="tableHieght - 180"
+        @row-dblclick="toDetail"
+        style="width: 100%">
+        <el-table-column
+          type="index"
+          fixed
+          width="50">
+        </el-table-column>
+        <el-table-column
+          prop="公司名称"
+          label="公司名称"
+          width="130">
+        </el-table-column>
+        <el-table-column
+          prop="项目名称"
+          label="项目名称"
+          width="220">
+        </el-table-column>
+        <el-table-column
+          prop="项目合同总价"
+          label="项目合同总价"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="预算毛利"
+          label="预算毛利"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="预算毛利率"
+          label="预算毛利率"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="决算金额"
+          label="决算金额"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="决算毛利"
+          label="决算毛利"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="决算毛利率"
+          label="决算毛利率"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="项目类别"
+          label="项目类别"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="销售员"
+          label="销售员"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="部门"
+          label="部门"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="公司名称"
+          label="公司名称"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          prop="预算设备及材料"
+          label="预算设备及材料"
+          width="140">
+        </el-table-column>
+        <el-table-column
+          prop="预算安装"
+          label="预算安装"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="预算费用"
+          label="预算费用"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="决算设备及材料"
+          label="决算设备及材料"
+          width="140">
+        </el-table-column>
+        <el-table-column
+          prop="决算安装"
+          label="决算安装"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          fixed="left"
+          label="操作"
+          width="160">
+          <template slot-scope="scope">
+            <!-- <el-button type="danger" size="mini" v-if="scope.row['合同号'] != '合计'" @click="del(scope.row.finterid)">删 除</el-button> -->
+            <el-button :disabled="userInfo.F_122 != 'True'" v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="primary" size="mini" @click="examine(scope.row.finterid, '审核')">审 核</el-button>
+            <el-button v-if="scope.row['审核状态'] == '未审核' && scope.row['合同号'] != '合计'" type="danger" size="mini" @click="del(scope.row.finterid)">删 除</el-button>
+            <el-button :disabled="userInfo.F_123 != 'True'" v-if="scope.row['审核状态'] == '已审核' && scope.row['合同号'] != '合计'" type="warning" size="mini" @click="examine(scope.row.finterid, '反审核')">反审核</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <el-pagination v-if="tableData.length > 0" style="margin: 10px 0;"
+        @current-change="getData"
+        :current-page.sync="curPage"
+        :page-size="pageSize"
+        layout="total, prev, pager, next, jumper"
+        :total="sum">
+      </el-pagination>
+    </div>
   </div>
 </template>
 

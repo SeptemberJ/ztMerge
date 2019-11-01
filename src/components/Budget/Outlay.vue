@@ -1,8 +1,11 @@
 <template>
-  <div class="Outlay"><el-button style="float:right;margin: 10px;" type="primary" size="small" @click="exportExcel">导 出</el-button>
-    <el-table
+  <div class="Outlay">
+    <el-button id="excelBt" style="float:right;margin: 10px;" type="primary" size="small" @click="exportExcel">导 出</el-button>
+    <el-table id="tableBlock"
       ref="dataTable"
       :data="dataList"
+      :height="tableHieght"
+      v-loading="loading"
       style="width: 100%">
       <el-table-column
         type="index"
@@ -90,12 +93,14 @@
 </template>
 
 <script>
-import { Loading } from 'element-ui'
+// import { Loading } from 'element-ui'
 export default {
   name: 'Outlay',
   props: ['projectName', 'parameter', 'timeStamp'],
   data () {
     return {
+      loading: false,
+      tableHieght: 300,
       dataList: []
     }
   },
@@ -108,6 +113,11 @@ export default {
     } else {
       this.getList()
     }
+    setTimeout(() => {
+      let height = document.documentElement.clientHeight
+      let btHeight = document.getElementById('excelBt').offsetHeight
+      this.tableHieght = height - btHeight - 200
+    }, 0)
   },
   watch: {
     timeStamp: function () {
@@ -123,11 +133,7 @@ export default {
   methods: {
     getList () {
       this.dataList = []
-      let loadingInstance = Loading.service({
-        lock: true,
-        text: '加载中',
-        spinner: 'el-icon-loading'
-      })
+      this.loading = true
       var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
@@ -170,25 +176,21 @@ export default {
             sumLine.F9 = (Number(sumLine.F9) + Number(item.F9)).toFixed(2)
             if (idx === Info.length - 1) {
               this.dataList = Info.concat(sumLine)
-              loadingInstance.close()
+              this.loading = false
             }
           })
         } else {
           this.dataList = Info
-          loadingInstance.close()
+          this.loading = false
         }
       }).catch((error) => {
-        loadingInstance.close()
+        this.loading = false
         console.log(error)
       })
     },
     getList1 () {
       this.dataList = []
-      let loadingInstance = Loading.service({
-        lock: true,
-        text: '加载中',
-        spinner: 'el-icon-loading'
-      })
+      this.loading = true
       var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
@@ -231,25 +233,21 @@ export default {
             sumLine.F9 = (Number(sumLine.F9) + Number(item.F9)).toFixed(2)
             if (idx === Info.length - 1) {
               this.dataList = Info.concat(sumLine)
-              loadingInstance.close()
+              this.loading = false
             }
           })
         } else {
           this.dataList = Info
-          loadingInstance.close()
+          this.loading = false
         }
       }).catch((error) => {
-        loadingInstance.close()
+        this.loading = false
         console.log(error)
       })
     },
     getList2 () {
       this.dataList = []
-      let loadingInstance = Loading.service({
-        lock: true,
-        text: '加载中',
-        spinner: 'el-icon-loading'
-      })
+      this.loading = true
       var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
@@ -292,15 +290,15 @@ export default {
             sumLine.F9 = (Number(sumLine.F9) + Number(item.F9)).toFixed(2)
             if (idx === Info.length - 1) {
               this.dataList = Info.concat(sumLine)
-              loadingInstance.close()
+              this.loading = false
             }
           })
         } else {
           this.dataList = Info
-          loadingInstance.close()
+          this.loading = false
         }
       }).catch((error) => {
-        loadingInstance.close()
+        this.loading = false
         console.log(error)
       })
     },

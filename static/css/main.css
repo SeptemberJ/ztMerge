@@ -21,6 +21,9 @@ body{
 .MarginB_10 {
   margin-bottom: 10px;
 }
+.MarginTB_10 {
+  margin: 10px 0 ;
+}
 .MarginT_20 {
   margin-top: 20px;
 }
@@ -45,7 +48,9 @@ body{
 .MarginB_10{
   margin-bottom: 10px;
 }
-
+.NoAuthor{
+  margin: 20px auto;
+}
 .CursorPointer{
   cursor: pointer;
 }
@@ -100,4 +105,7 @@ table .el-input.is-disabled .el-input__inner {
 }
 .el-aside .el-menu{
   border-right: 0 !important;
+}
+.el-divider--horizontal{
+  margin: 12px 0;
 }

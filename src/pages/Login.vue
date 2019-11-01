@@ -39,8 +39,8 @@ export default {
       btLoading: false,
       realCode: '', // 随机验证码
       Form: {
-        accountName: 'test', // 高健 test
-        accountPsd: '1' // 1 123
+        accountName: '', // 高健 test
+        accountPsd: '' // 1 123
       },
       rules: {
         accountName: [
@@ -105,8 +105,7 @@ export default {
           case '1':
             let cookieStr = CryptoJS.HmacSHA256((this.Form.accountName + this.Form.accountPsd).toString(), '18a808c40bba58c2c')
             setCookie('ZT_18a808c40bba58c2c', cookieStr, 6)
-            this.updateUserInfo({fempid: Info.fempid})
-            // this.$router.push({name: 'BudgetList'})
+            this.updateUserInfo(Info)
             this.$router.push({name: 'Index'})
             this.btLoading = false
             break

@@ -3,11 +3,11 @@
     <router-view v-if="pathName == 'Login'"/>
     <el-container v-else>
       <el-header height="42px" style="width: 100%;background: #4396CA;position:fixed;top:0;zIndex: 999;">
-        <span @click="goIndex" style="height:42px;display:block;line-height: 42px;color:#fff;float:left;"><i class="el-icon-menu" style="padding-right: 5px;"></i>泽天工程项目系统{{pathName}}</span>
+        <span @click="goIndex" style="height:42px;display:block;line-height: 42px;color:#fff;float:left;"><i class="el-icon-menu" style="padding-right: 5px;"></i>泽天工程项目系统</span>
         <span @click="logout" style="height:42px;display:block;float:right;font-size: 14px;line-height: 42px;color:#fff;cursor: pointer;padding-right: 10px;">退出登陆 <i class="fa fa-sign-out" style="margin-left: 10px;color:#fff;font-size: 18px;"></i></span>
       </el-header>
       <el-container>
-        <el-aside id="sider" width="100px" style="background: #4396CA;position:fixed;top: 42px;">
+        <el-aside id="sider" width="120px" style="background: #4396CA;position:fixed;top: 42px;">
           <el-menu
             :default-active="siderIdx"
             background-color="#4396CA"
@@ -16,17 +16,17 @@
             @select="changeSideMenu"
             class="el-menu-vertical-demo">
             <el-menu-item index="1">
-              <span slot="title">合同监控</span>
+              <span slot="title">项目进度管理</span>
             </el-menu-item>
             <el-menu-item index="2">
-              <span slot="title">分包合同</span>
+              <span slot="title">预决算管理</span>
             </el-menu-item>
             <el-menu-item index="3">
-              <span slot="title">预决算表</span>
+              <span slot="title">分包合同管理</span>
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main style="width: calc(100% - 100px);position: absolute;top: 42px;left: 100px;"><router-view/></el-main>
+        <el-main style="width: calc(100% - 120px);position: absolute;top: 42px;left: 120px;"><router-view/></el-main>
       </el-container>
     </el-container>
   </div>
@@ -40,7 +40,8 @@ export default {
   computed: {
     ...mapState({
       siderIdx: state => state.siderIdx,
-      pathName: state => state.pathName
+      pathName: state => state.pathName,
+      userInfo: state => state.userInfo
     })
   },
   watch: {
@@ -66,14 +67,13 @@ export default {
       this.changeSiderIdx(index)
       switch (index) {
         case '1':
-          this.$router.push({name: 'BudgetList'})
-          // this.$router.push({name: 'FilterTable'})
+          this.$router.push({name: 'FilterTable'})
           break
         case '2':
-          this.$router.push({name: 'ContractList'})
+          this.$router.push({name: 'BudgetList'})
           break
         case '3':
-          this.$router.push({name: 'BudgetList'})
+          this.$router.push({name: 'ContractList'})
           break
       }
     },

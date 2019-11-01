@@ -93,6 +93,21 @@ function getzf (num) {
   return num
 }
 
+// 日期大小
+export function compareNYR (parameter) {
+  if (parameter) {
+    let dateA = new Date(parameter.substring(0, 10))
+    let dateNow = new Date()
+    if (dateA.getTime() < dateNow.getTime()) {
+      return 1
+    } else {
+      return 0
+    }
+  } else {
+    return 0
+  }
+}
+
 // uuid
 export function getuuid () {
   var uid = []

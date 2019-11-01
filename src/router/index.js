@@ -6,6 +6,11 @@ import BudgetDetail from '@/pages/Budget/BudgetDetail'
 import ContractList from '@/pages/Subcontract/ContractList'
 import ContractDetail from '@/pages/Subcontract/ContractDetail'
 import ContractAdd from '@/pages/Subcontract/ContractAdd'
+import ContractFee from '../components/Subcontract/Fee'
+import FilterTable from '@/pages/HTJK/FilterTable'
+import InfoDynamicTable from '@/pages/HTJK/InfoDynamicTable'
+import HTJKOutlay from '@/pages/HTJK/Outlay'
+import HTJKCost from '@/pages/HTJK/Cost'
 import Index from '@/pages/Index'
 import Login from '@/pages/Login'
 import {getCookie} from '@/util/utils'
@@ -61,6 +66,36 @@ const router = new VueRouter({
       path: '/ContractAdd',
       name: 'ContractAdd',
       component: ContractAdd,
+      meta: {requireAuth: true}
+    },
+    {
+      path: '/ContractFee',
+      name: 'ContractFee',
+      component: ContractFee,
+      meta: {requireAuth: true}
+    },
+    {
+      path: '/FilterTable',
+      name: 'FilterTable',
+      component: FilterTable,
+      meta: {requireAuth: true}
+    },
+    {
+      path: '/InfoDynamicTable',
+      name: 'InfoDynamicTable',
+      component: InfoDynamicTable,
+      meta: {requireAuth: true}
+    },
+    {
+      path: '/HTJKCost',
+      name: 'HTJKCost',
+      component: HTJKCost,
+      meta: {requireAuth: true}
+    },
+    {
+      path: '/HTJKOutlay',
+      name: 'HTJKOutlay',
+      component: HTJKOutlay,
       meta: {requireAuth: true}
     },
     {path: '*', redirect: '/Login'}
