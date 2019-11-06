@@ -1,9 +1,25 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh7USSwaPGR_p.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+html, body{
+  font-family: 'Lato';
+  height: 100%;
+  min-height: 100%;
+}
 *{
   padding: 0;
   margin: 0;
+  outline: none;
 }
 body{
-  min-width: 1024px;
+  min-width: 1024px !important;
+  background-image:url(../image/bg.jpg); 
+  background-repeat:no-repeat; 
+  background-attachment:fixed
 }
 .TextAlignC {
   text-align: center;
@@ -97,15 +113,36 @@ table .el-input.is-disabled .el-input__inner {
   color: #fff;
 }
 .el-main{
-  padding: 5px 2px 5px 10px !important;
+  padding: 0 0 0 0 !important;
+  /* padding: 5px 2px 5px 10px !important; */
+}
+.el-aside{
+  background: rgba(239,245,249,0.7);
 }
 .el-aside .el-menu-item.is-active{
-  background: #fff !important;
   font-weight: bold;
+}
+.el-aside .el-menu-item.is-active span{
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #1957f6 !important;
+  font-weight: bold;
+  margin-left: -6px;
 }
 .el-aside .el-menu{
   border-right: 0 !important;
+  background: transparent !important;
+  margin-top: 50px;
 }
 .el-divider--horizontal{
   margin: 12px 0;
+}
+
+td .el-input__inner{
+  border: 0px !important;
+  text-align: center;
+}
+.InputItem .el-input__inner{
+  background: #f7f7f7;
+  border: 1px solid #f7f7f7;
 }

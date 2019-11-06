@@ -1,16 +1,26 @@
 <template>
-  <div class="wrap">
-    <div class="Login">
-      <div class="MarginB_20"><h2 class="ColorWhite" style="letter-spacing: .34em;">用户登陆</h2></div>
-      <el-form :model="Form" :rules="rules" ref="Form" label-width="0px" class="demo-ruleForm">
-        <el-form-item label="" prop="accountName">
-          <el-input v-model="Form.accountName" placeholder="用户名" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="" prop="accountPsd">
-          <el-input v-model="Form.accountPsd" type="password" placeholder="密码" clearable></el-input>
-        </el-form-item>
-        <el-button type="primary" :loading="btLoading" class="bt" @click="Login('Form')">登陆</el-button>
-      </el-form>
+  <div class="wrap" id="WrapBlock">
+    <div class="LoginBlock">
+      <p class="TextAlignL">您好！欢迎来到泽天项目工程系统</p>
+      <span class="Line"></span>
+      <div class="InputBlock">
+        <div class="InputItem">
+          <el-input
+            placeholder="工号/手机号"
+            prefix-icon="if-icons if-iconuser"
+            v-model="Form.accountName">
+          </el-input>
+        </div>
+        <div class="InputItem">
+          <el-input
+            placeholder="密码"
+            type="password"
+            prefix-icon="if-icons if-iconpsd"
+            v-model="Form.accountPsd">
+          </el-input>
+        </div>
+        <button type="primary" :loading="btLoading" clasS="BtButton CursorPointer" @click="Login('Form')">登 陆</button>
+      </div>
     </div>
   </div>
 </template>
@@ -21,42 +31,16 @@ import CryptoJS from 'crypto-js'
 export default {
   name: 'Login',
   data () {
-    var validateName = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入用户名'))
-      } else {
-        callback()
-      }
-    }
-    var validatePsd = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入密码'))
-      } else {
-        callback()
-      }
-    }
     return {
       btLoading: false,
       realCode: '', // 随机验证码
       Form: {
-        accountName: '', // 高健 test
-        accountPsd: '' // 1 123
-      },
-      rules: {
-        accountName: [
-          { validator: validateName, trigger: 'change' }
-        ],
-        accountPsd: [
-          { validator: validatePsd, trigger: 'change' }
-        ]
+        accountName: '',
+        accountPsd: ''
       }
-
     }
   },
   computed: {
-    // ...mapState({
-    //   // btLoading: state => state.btLoading
-    // })
   },
   created () {
     this.changeSiderIdx('0')
@@ -68,18 +52,15 @@ export default {
       'changeSiderIdx',
       'changePath'
     ]),
-    Login (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.sureLogin()
-        } else {
-          this.$message({
-            message: '请将信息填写完整!',
-            type: 'warning'
-          })
-          return false
-        }
-      })
+    Login () {
+      if (!this.Form.accountName || !this.Form.accountPsd) {
+        this.$message({
+          message: '请将信息填写完整!',
+          type: 'warning'
+        })
+      } else {
+        this.sureLogin()
+      }
     },
     // 登陆
     sureLogin () {
@@ -128,37 +109,91 @@ export default {
 .wrap{
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   background: #102b6a;
-  // background: url('../../static/images/bg.jpg') no-repeat center/cover;
+  background: url('../../static/image/loginBg.jpg') no-repeat center/cover;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  .Login{
-    max-width: 388px;
-    width: 70%;
-    margin: 0 auto;
-    background: transparent;
-    padding: 16px 32px 32px 32px;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
-    .bt{
-      width: 100%;
-      font-weight: 400;
-      letter-spacing: .34em;
+  .LoginBlock{
+    width: 27%;
+    min-width: 320px;
+    padding: 50px 30px;
+    background: #fff;
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 15px;
+    p{
+      font-size: 18px;
+      font-weight: bold;
     }
-    .codeBlock{
-      width: 100px;
-      height: 35px !important;
-      line-height: 35px;
-      float: right;
-      border: 1px solid #eee;
-      font-family:Arial,宋体;
-      font-style:italic;
-      color:#fff;
-      padding:2px 3px;
-      letter-spacing:3px;
-      font-weight:bolder;
-      cursor: pointer;
+    .Line{
+      width: 50px;
+      height: 2px;
+      background: #028bff;
+      float: left;
+      margin-top: 10px;
     }
+    .InputBlock{
+      margin-top: 40px;
+      .InputItem{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background: #f7f7f7;
+        margin-top: 20px;
+      }
+      .BtButton{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        border-radius: 50px;
+        margin-top: 40px;
+        background: url('../../static/image/loginBt.png') no-repeat center/cover;
+        box-shadow: 0px 7px 10px 0px rgba(185,223,255,1);
+        border: 0px solid red;
+        overflow: hidden;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1423px) {
+  .LoginBlock{
+    width: 27%;
+    padding: 45px 25px !important;
+    p{
+      font-size: 16px !important;
+    }
+    .InputItem{
+        height: 45px !important;
+        line-height: 45px !important;
+      }
+      .BtButton{
+        height: 45px !important;
+        line-height: 45px !important;
+        margin-top: 30px !important;
+      }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .LoginBlock{
+    width: 27%;
+    padding: 40px 20px !important;
+    p{
+      font-size: 15px !important;
+    }
+    .InputItem{
+        height: 40px !important;
+        line-height: 40px !important;
+      }
+      .BtButton{
+        height: 40px !important;
+        line-height: 40px !important;
+        margin-top: 30px !important;
+      }
   }
 }
 </style>

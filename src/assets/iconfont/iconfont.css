@@ -1,0 +1,29 @@
+@font-face {font-family: "if-icons";
+  src: url('iconfont.eot?t=1573008735968'); /* IE9 */
+  src: url('iconfont.eot?t=1573008735968#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAP0AAsAAAAACAwAAAOmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDUINDATYCJAMQCwoABCAFhG0HPRsqBxFVnCnIfiTYtnBWdHI+cV6iZtAifZMPvVe+mWSvuc1BZJtU4C+oRQF8CVubdmyjIgxTch58l/+HBHb+8uk6X6erVIWskMWI244X1KYW/3O/V38mWN7fAHDfr45V0c6EEmhAUU0jnM0GxFvEs+kuVB7zXX4cCAApLLghcQlpeeDAgh1HAJC25sZqcFkQbM9EAg4EKi2XsiALIQFHZ9GrABbYnycf4BMHUEgYsFOzGuLrEPXa9O1qRvgvoEyTYDpdHMDsKoAB4AZgAdLUmqwB45tuGEg3f8MiAMCBAwVem772ebv6/38wP4qT406M/cejAFEBG1cDAPiBg3lhJmmMLh/QAwHerh4DBYAfxM3ByGIAz8B4Zm5JQcG6aKiaG6tK1EdvFxwJPaEUFYQ1W7a7IA8/FCzLuinL47coiVrinDn8OfkUa16h6FEqC/3d8mWyPAc7haIzvLAgLF8N6nk3ZbMPtIvI/Bx5tv4ge0E3AcTQQ6XDWtt3E0bc48iTkXPBb9sFKuysGPJqaOZLNah2w5xlgLB09nJCxBVeURcPp5lO0Wx0rusSkoyMOucuNMYs1qg5pfk2h7UDxkm8l6tna15+k8dmVT3VzRQDpjlXLxJf9ZqKtEoUq5SYimJvaf+kYs7KSqKt49H3q3vZrlcbGs9FnfP/Uj87eI2QtLcFzVmNxpidVv8lO7zwWEMvjrG//8wxjhoVUdkaWm6VjeAnOFV9Mnxl+Kkqu43O3L9/JrXRKUKoLbtpyrojpHvFih7KsXoI6W4zme6frXzltGSI/6emVPtnQPaGAwD8v8V0MZ7Wd5Kh9ihoC8wVRviXD8PZvKmLKjXDvnL8p1x3721BJc3/F1jgXPirTGjTf2pCrmK3FhZi2bVVGncpFkFJHygAKY8A/2QX0PH4FG59dB0g4DLTDCgmwBwYcLAjs3Q3kEjw/EAFJxKkXBVX83SJJTIX4OJNgNDyAUrDCWBo+ZJZ+g8kDPxBhVZLkCpI95Y8h9pDrKBRrMC+oC15ItHQQzMFsMAfsb4NRpYWK7mi+LYCSRiXnQInlFOc4u91qkpAwiPk5ImKw8DghDssNWxUXRZF1PZNYcnj7CCWQIZCFWC9gFaJTUgvVgfNSAC/7R2h2s3AkJ4V8+YVEmqAnYNEKEaQC+eEWvFWvuLd1VJKEUAEG4H85g5CgwEDrv2gDiqpUDOi7mQivhZhneGF3eM3vA1Air2LbbWbDvZ7lE0b13zTZZevZjMAAA==') format('woff2'),
+  url('iconfont.woff?t=1573008735968') format('woff'),
+  url('iconfont.ttf?t=1573008735968') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1573008735968#if-icons') format('svg'); /* iOS 4.1- */
+}
+
+.if-icons {
+  font-family: "if-icons" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.if-iconuser:before {
+  content: "\e632";
+}
+
+.if-iconlogout:before {
+  content: "\e89a";
+}
+
+.if-iconpsd:before {
+  content: "\e61b";
+}
+

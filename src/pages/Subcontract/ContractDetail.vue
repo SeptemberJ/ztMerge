@@ -636,7 +636,6 @@ export default {
       // this.dialogVisibleSGFY = true
     },
     async exportExcel () {
-      console.log(this.exportData)
       require.ensure([], () => {
         const { exportJsonToExcel } = require('../../vendor/Export2Excel.js')
         const tHeader = ['产品名称', '产品代码', '规格型号', '数量', '含税单价', '价税合计', '备注', '单位']
@@ -1092,7 +1091,7 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = (JSON.parse(Result))[0]
-        console.log(Info)
+        // console.log(Info)
         if (Info.code === '1') {
           this.$message({
             message: '保存成功!',
@@ -1422,7 +1421,6 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
-        console.log('orignFile', Info)
         Info.map(item => {
           // item.fileDate = item.fdate ? item.fdate : ''
           item.srcAfter = item['文件路径'].replace('#', '%23')
@@ -1476,42 +1474,46 @@ export default {
 </script>
 
 <style lang='less' scoped>
-  .listColumnTit{
-    background:lightsteelblue;
-    border-bottom: 1px solid #eee;
-    .el-col{
-      &:not(:last-child){
-        border-right: 1px solid #eee;
-      }
-       span{
-        height: 42px;
-        line-height: 42px;
-        display: block;
-      }
+.Contract{
+  background: #fff;
+  padding: 20px;
+}
+.listColumnTit{
+  background:lightsteelblue;
+  border-bottom: 1px solid #eee;
+  .el-col{
+    &:not(:last-child){
+      border-right: 1px solid #eee;
     }
-  }
-  .listTable{
-    border-bottom: 1px solid #eee;
-    .el-col{
+      span{
       height: 42px;
       line-height: 42px;
-      &:not(:last-child){
-        border-right: 1px solid #eee;
-      }
-      span{
-        font-size: 14px;
-      }
+      display: block;
     }
   }
-  .ModuleTit{
+}
+.listTable{
+  border-bottom: 1px solid #eee;
+  .el-col{
     height: 42px;
-    background: #ddd;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     line-height: 42px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    &:not(:last-child){
+      border-right: 1px solid #eee;
+    }
+    span{
+      font-size: 14px;
+    }
   }
+}
+.ModuleTit{
+  height: 42px;
+  background: #ddd;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 </style>

@@ -154,7 +154,7 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
-        console.log(Info)
+        // console.log(Info)
         if (Info.length > 0) {
           let sumLine = {
             F1: '合计',
@@ -205,4 +205,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.Outlay{
+  background: #fff;
+  padding: 20px;
+}
 </style>

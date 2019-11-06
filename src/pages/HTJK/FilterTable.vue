@@ -173,7 +173,7 @@
                         </el-option>
                       </el-select>
                     </el-form-item>
-                    <el-form-item label="竣工项目">
+                    <!-- <el-form-item label="竣工项目">
                       <el-select class="WidthFull" v-model="formFilter.completionProject" placeholder="请选择">
                         <el-option
                           v-for="item in completionProjectOption"
@@ -192,7 +192,7 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                    </el-form-item>
+                    </el-form-item> -->
                     <el-form-item label="进入质保期项目" label-width="110px">
                       <el-select class="WidthFull" v-model="formFilter.inQuality" placeholder="请选择">
                         <el-option
@@ -282,10 +282,10 @@
                   </el-col>
                   <el-col :span="9" :offset="1">
                     <section>
-                      <p style="text-align: left;margin-bottom: 5px;">排序</p>
+                      <p style="text-align: left;margin-bottom: 5px;font-size: 14px;">排序</p>
                       <div class="sortBlock">
-                        <el-menu
-                          default-active="按签约价"
+                        <el-menu @select="selectSortMenu"
+                          :default-active="formFilter.sort"
                           class="el-menu-vertical-demo">
                           <el-menu-item v-for="(item, idx) in sortList" :key="idx" :index="item">
                             <span slot="title">{{item}}</span>
@@ -294,20 +294,20 @@
                       </div>
                     </section>
                     <section>
-                      <p class="MarginT_10" style="text-align: left;padding-bottom: 5px;">项目名称</p>
+                      <p class="MarginT_10" style="text-align: left;padding-bottom: 5px;font-size: 14px;">项目名称</p>
                       <div class="vagueSearchBlock">
                         <!-- @blur="changeFilter" @keyup.enter.native='enterEvent' -->
                         <el-input v-model="formFilter.xmmc" clearable size="mini"></el-input>
                       </div>
                     </section>
                     <section>
-                      <p class="" style="text-align: left;padding-bottom: 5px;">项目编号</p>
+                      <p class="" style="text-align: left;padding-bottom: 5px;font-size: 14px;">项目编号</p>
                       <div class="vagueSearchBlock">
                         <el-input v-model="formFilter.projectNumber" clearable size="mini"></el-input>
                       </div>
                     </section>
                     <section>
-                      <p class="" style="text-align: left;padding-bottom: 5px;">客户名称</p>
+                      <p class="" style="text-align: left;padding-bottom: 5px;font-size: 14px;">客户名称</p>
                       <div class="vagueSearchBlock">
                         <el-input v-model="formFilter.customer" clearable size="mini"></el-input>
                       </div>
@@ -394,6 +394,12 @@
             show-overflow-tooltip>
           </el-table-column>
           <el-table-column
+            prop="毛利率"
+            label="毛利率"
+            width="100"
+            show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column
             prop="费用金额2"
             label="费用金额"
             width="150"
@@ -414,6 +420,12 @@
           <el-table-column
             prop="出货率"
             label="出货率"
+            width="100"
+            show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column
+            prop="收款率"
+            label="收款率"
             width="100"
             show-overflow-tooltip>
           </el-table-column>
@@ -568,8 +580,8 @@ export default {
       ],
       warnTipOption: [
         {label: '全部', value: '全部'},
-        {label: '进度节点', value: '进度节点'},
-        {label: '收款节点', value: '收款节点'}
+        {label: '收款节点', value: '收款节点'},
+        {label: '项目节点', value: '项目节点'}
       ],
       makeLetterOption: [
         {label: '有保函', value: '有保函'},
@@ -578,11 +590,14 @@ export default {
         {label: '质量保函', value: '质量保函'}
       ],
       subcontractItemOption: [
+        {label: '全部', value: '全部'},
         {label: '有分包项目', value: '有分包项目'},
         {label: '无分包项目', value: '无分包项目'}
       ],
       receivablesContionOption: [
-        {label: '收款全部完成', value: '收款全部完成'}
+        {label: '全部', value: '全部'},
+        {label: '收款全部完成', value: '收款全部完成'},
+        {label: '收款未完成', value: '收款未完成'}
       ],
       completionProjectOption: [
         {label: '全部', value: '全部'},
@@ -592,7 +607,11 @@ export default {
       advancesOption: [
         {label: '有垫资项目', value: '有垫资项目'}
       ],
-      inQualityOption: [],
+      inQualityOption: [
+        {label: '全部', value: '全部'},
+        {label: '进入', value: '进入'},
+        {label: '未进入', value: '未进入'}
+      ],
       contractPriceList: [
         {label: '全部', value: -1},
         {label: '99万元以下', value: 0},
@@ -638,7 +657,7 @@ export default {
         {label: '全部', value: -1},
         {label: '具有分包的项目', value: 0}
       ],
-      sortList: ['按签约价', '按结算价', '按预算毛利率', '按实际买利率', '按资金占用', '按出货率', '按收款率', '按商务', '按项目经理']
+      sortList: ['按签约日期', '按签约价', '按商务', '按出货率', '按收款率', '按实际毛利率']
     }
   },
   created () {
@@ -658,7 +677,6 @@ export default {
     }),
     formFilter: {
       get: function () {
-        console.log(this.$store.state.formFilter)
         return this.$store.state.formFilter
       },
       set: function (newValue) {
@@ -680,8 +698,12 @@ export default {
       'updateXMMC',
       'updateCurDB',
       'updateResultData',
-      'updateFilterCondition'
+      'updateFilterCondition',
+      'changeSort'
     ]),
+    selectSortMenu (key) {
+      this.changeSort(key)
+    },
     goDetail (row) {
       this.updateContractNo(row['合同号'])
       this.updateXMMC(row['项目名称'])
@@ -743,7 +765,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += "<FSQL>exec [Z_ContractList] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.pageSize * this.curPage + ',' + this.userInfo.fempid + '</FSQL>'
+      tmpData += "<FSQL>exec [Z_ContractList_test] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.pageSize * this.curPage + ',' + this.userInfo.fempid + ",'" + this.formFilter.sort + "'</FSQL>"
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -765,7 +787,7 @@ export default {
         } else {
           this.sum = 0
         }
-        console.log('filterInfo---', Info)
+        // console.log('filterInfo---', Info)
         this.resultData = Info.map(item => {
           item['开工日期'] = item['开工日期'] ? item['开工日期'].slice(0, 10) : ''
           item['完工日期'] = item['完工日期'] ? item['完工日期'].slice(0, 10) : ''
@@ -899,6 +921,7 @@ export default {
 
 <style lang='less' scoped>
 .FilterTable{
+  background: #fff;
   padding: 0;
   .FilterBlock{
     padding: 10px;
@@ -908,7 +931,7 @@ export default {
   }
 }
 .sortBlock{
-  height: 200px;
+  height: 180px;
   overflow-y: scroll;
   text-align: left;
 }

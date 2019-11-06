@@ -34,29 +34,29 @@ const state = {
   curDB: null,
   resultDataOrigin: [],
   formFilter: {
-    affiliatedCompany: '全部',
-    signDepartment: '全部',
-    contractSumS: '',
-    contractSumE: '',
-    industryType: '全部',
-    projectType: '全部',
-    warnTip: '',
-    subcontractItem: '',
-    receivablesContion: '',
-    completionProject: '',
-    advances: '',
-    inQuality: '',
-    contractPrice: -1,
+    affiliatedCompany: '全部', // 所属公司
+    signDepartment: '全部', // 签约部门
+    contractSumS: '', // 合同金额
+    contractSumE: '', // 合同金额
+    industryType: '全部', // 行业类型
+    projectType: '全部', // 项目类型
+    warnTip: '全部', // 具有报警项目
+    subcontractItem: '全部', // 分包项目
+    receivablesContion: '全部', // 收款情况
+    // completionProject: '', // 竣工项目
+    // advances: '', // 垫资情况
+    inQuality: '全部', // 进入质保期项目
+    // contractPrice: -1,
     signYear: CurYear,
-    signAndFinish: -1,
-    fileConditionn: -1,
-    classCondition: -1,
-    performBond: -1,
-    qualityBond: -1,
-    shipmentRate: '',
-    receivablesRate: '',
-    subItems: -1,
-    sort: '',
+    // signAndFinish: -1, // 签约与竣工
+    // fileConditionn: -1, // 归档情况
+    // classCondition: -1, // 分类管控
+    // performBond: -1, // 履约保证金
+    // qualityBond: -1, // 质量保证金
+    // shipmentRate: '', // 出货率
+    // receivablesRate: '', // 收款率
+    // subItems: -1, // 分包项目情况
+    sort: '按出货率',
     // vagueSearch: ''
     // contractNo: '', // XSHT002089
     xmmc: 'B17070221ZG1804杨浦区311街坊C3地块及北区综合项目二期改造（复旦管院）', // B17070221ZG1804杨浦区311街坊C3地块及北区综合项目二期改造（复旦管院）
@@ -94,6 +94,9 @@ const actions = {
   updateFilterCondition ({commit, state}, Data) {
     commit('setFilterCondition', Data)
   },
+  changeSort ({commit, state}, kind) {
+    commit('setFilterSort', kind)
+  },
   updateUserInfo ({commit, state}, UserInfo) {
     commit('setUserInfo', UserInfo)
   }
@@ -127,6 +130,9 @@ const mutations = {
   },
   setFilterCondition (state, Data) {
     state.formFilter = Data
+  },
+  setFilterSort (state, kind) {
+    state.formFilter.sort = kind
   },
   setUserInfo (state, UserInfo) {
     state.userInfo = UserInfo

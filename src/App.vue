@@ -1,34 +1,34 @@
 <template>
   <div id="app">
     <router-view v-if="pathName == 'Login'"/>
-    <el-container v-else>
-      <el-header height="42px" style="width: 100%;background: #4396CA;position:fixed;top:0;zIndex: 999;">
-        <span @click="goIndex" style="height:42px;display:block;line-height: 42px;color:#fff;float:left;"><i class="el-icon-menu" style="padding-right: 5px;"></i>泽天工程项目系统</span>
-        <span @click="logout" style="height:42px;display:block;float:right;font-size: 14px;line-height: 42px;color:#fff;cursor: pointer;padding-right: 10px;">退出登陆 <i class="fa fa-sign-out" style="margin-left: 10px;color:#fff;font-size: 18px;"></i></span>
+    <el-container v-else direction="vertical" style="background:red;height:100%;">
+      <el-header height="65px" style="width: 100%;background: #1965f6;position:fixed;top:0;zIndex: 999;">
+        <span @click="goIndex" style="height:65px;display:block;line-height: 65px;color:#fff;float:left;font-size: 22px;"><img src="../static/image/logo.png" style="height:65px;float:left;margin-right:20px;"/>泽 天 项 目 工 程 系 统</span>
+        <span title="退出" @click="logout" style="height:65px;display:block;float:right;font-size: 14px;line-height: 65px;color:#fff;cursor: pointer;padding-right: 10px;">退出登陆 <i class="if-icons if-iconlogout" style="margin-left: 10px;color:#fff;font-size: 18px;"></i></span>
       </el-header>
-      <el-container>
-        <el-aside id="sider" width="120px" style="background: #4396CA;position:fixed;top: 42px;">
+      <el-container direction="vertical">
+        <el-aside id="sider" width="150px" style="position:fixed;top: 65px;">
           <el-menu
             :default-active="siderIdx"
-            background-color="#4396CA"
-            text-color="#fff"
-            active-text-color="#4396CA"
+            text-color="#000"
+            active-text-color="#fff"
             @select="changeSideMenu"
             class="el-menu-vertical-demo">
             <el-menu-item index="1">
-              <span slot="title">项目进度管理</span>
+              <span slot="title" style="">• 项目进度管理</span>
             </el-menu-item>
             <el-menu-item index="2">
-              <span slot="title">预决算管理</span>
+              <span slot="title">• 预决算管理</span>
             </el-menu-item>
             <el-menu-item index="3">
-              <span slot="title">分包合同管理</span>
+              <span slot="title">• 分包合同管理</span>
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main style="width: calc(100% - 120px);position: absolute;top: 42px;left: 120px;"><router-view/></el-main>
+        <el-main style="width: calc(100% - 150px);position: absolute;top: 65px;left: 150px;"><router-view/></el-main>
       </el-container>
     </el-container>
+    <div style="clear:both;"></div>
   </div>
 </template>
 
@@ -47,14 +47,14 @@ export default {
   watch: {
     pathName: function () {
       setTimeout(() => {
-        let height = document.documentElement.clientHeight - 42
+        let height = document.documentElement.clientHeight - 65
         document.getElementById('sider').style.height = height + 'px'
       }, 0)
     }
   },
   created () {
     setTimeout(() => {
-      let height = document.documentElement.clientHeight - 42
+      let height = document.documentElement.clientHeight - 65
       document.getElementById('sider').style.height = height + 'px'
     }, 0)
   },
@@ -108,6 +108,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100%;
 }
 .topLine{
   width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="Index">
-    <p class="NoAuthor">欢 迎 登 陆 泽 天 项 目 工 程 系 统</p>
-    <img src="../../static/image/zt.png" style="width: 30%;"/>
+    <p class="NoAuthor">欢 迎 您 登 陆 泽 天 项 目 工 程 系 统</p>
+    <!-- <img src="../../static/image/zt.jpg" style="width: 100%;"/> -->
   </div>
   <!-- <div class="Module">
     <div class="Item" style="margin-top: 40px;" @click="goModule(0)">
@@ -45,7 +45,8 @@ export default {
 <style lang="less" scoped>
   .Index p{
     font-size: 32px;
-    font-weight: bold;
+    margin-top: 100px;
+    // font-weight: bold;
   }
   .Module{
     width: 100%;

@@ -2,7 +2,7 @@
   <div class="ContractList">
      <h2 v-if="userInfo.F_121 != 'True'" class="NoAuthor">对不起，您没有查看该模块的权限！</h2>
      <div v-else>
-      <el-row style="margin: 20px 0 0 0;">
+      <el-row>
         <el-form :inline="true" class="demo-form-inline">
           <el-form-item label="项目编号" size="mini">
             <el-input v-model="filterProjectCode" size="mini" placeholder="请输入项目编号" clearable></el-input>
@@ -396,7 +396,7 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
-        console.log(Info)
+        // console.log(Info)
         if (Info.length > 0) {
           this.tableData = Info.map(item => {
             item['合同名称'] = item['合同名称'] === '0' ? '' : item['合同名称']
@@ -419,4 +419,8 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.ContractList{
+  background: #fff;
+  padding: 20px;
+}
 </style>

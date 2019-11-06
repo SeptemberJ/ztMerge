@@ -1,7 +1,7 @@
 <template>
   <div class="Cost">
     <!-- <H1>成 本</H1> -->
-    <el-breadcrumb separator-class="el-icon-arrow-right" class="MarginT_10">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/FilterTable' }">项目进度管理</el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/InfoDynamicTable' }">项目进度详情</el-breadcrumb-item>
       <el-breadcrumb-item>项目进度成本</el-breadcrumb-item>
@@ -199,7 +199,7 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
-        console.log(Info)
+        // console.log(Info)
         if (Info.length > 0) {
           let sumLine = {
             F1: '合计',
@@ -262,4 +262,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.Cost{
+  background: #fff;
+  padding: 20px;
+}
 </style>

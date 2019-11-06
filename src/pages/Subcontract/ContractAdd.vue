@@ -1027,42 +1027,46 @@ export default {
 </script>
 
 <style lang='less' scoped>
-  .listColumnTit{
-    background:lightsteelblue;
-    border-bottom: 1px solid #eee;
-    .el-col{
-      &:not(:last-child){
-        border-right: 1px solid #eee;
-      }
-       span{
-        height: 42px;
-        line-height: 42px;
-        display: block;
-      }
+.Contract{
+  background: #fff;
+  padding: 20px;
+}
+.listColumnTit{
+  background:lightsteelblue;
+  border-bottom: 1px solid #eee;
+  .el-col{
+    &:not(:last-child){
+      border-right: 1px solid #eee;
     }
-  }
-  .listTable{
-    border-bottom: 1px solid #eee;
-    .el-col{
+      span{
       height: 42px;
       line-height: 42px;
-      &:not(:last-child){
-        border-right: 1px solid #eee;
-      }
-      span{
-        font-size: 14px;
-      }
+      display: block;
     }
   }
-  .ModuleTit{
+}
+.listTable{
+  border-bottom: 1px solid #eee;
+  .el-col{
     height: 42px;
-    background: #ddd;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     line-height: 42px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    &:not(:last-child){
+      border-right: 1px solid #eee;
+    }
+    span{
+      font-size: 14px;
+    }
   }
+}
+.ModuleTit{
+  height: 42px;
+  background: #ddd;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 </style>

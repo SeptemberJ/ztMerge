@@ -10,6 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Http from './util/request'
 import '../static/css/main.css'
 import x2js from 'x2js' // xml数据处理插件
+import '@/assets/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.prototype.Http = Http

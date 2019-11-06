@@ -1,6 +1,6 @@
 <template>
   <div class="InfoDynamicTable">
-    <el-breadcrumb separator-class="el-icon-arrow-right" class="MarginT_10">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/FilterTable' }">项目进度管理</el-breadcrumb-item>
       <el-breadcrumb-item>项目进度详情</el-breadcrumb-item>
     </el-breadcrumb>
@@ -970,6 +970,10 @@ export default {
 
 <style lang='less' scoped>
 @stepItemWidth: 150px;
+.InfoDynamicTable{
+  background: #fff;
+  padding: 20px;
+}
 .mainContainer {
   display:flex;
   display: -webkit-flex;
