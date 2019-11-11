@@ -44,8 +44,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
   .Index p{
-    font-size: 32px;
+    font-size: 36px;
     margin-top: 100px;
+    color: #898f98;
     // font-weight: bold;
   }
   .Module{

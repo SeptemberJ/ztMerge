@@ -11,6 +11,8 @@ import Http from './util/request'
 import '../static/css/main.css'
 import x2js from 'x2js' // xml数据处理插件
 import '@/assets/iconfont/iconfont.css'
+import Print from '../static/js/print' // 引入附件的js文件
+Vue.use(Print) // 注册
 
 Vue.config.productionTip = false
 Vue.prototype.Http = Http
