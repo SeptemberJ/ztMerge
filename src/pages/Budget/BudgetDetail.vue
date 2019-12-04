@@ -6,7 +6,7 @@
     </el-breadcrumb>
     <el-divider></el-divider>
     <!-- <h2 class="MarginB_20">工程项目预决算表</h2> -->
-    <section ref="print" style="background: #fff;">
+    <section id="print" ref="print" style="background: #fff;">
       <section>
         <el-form class="DisabledNormal" ref="formBudget" :rules="rules" :model="formBudget" label-width="100px">
           <el-row>
@@ -170,72 +170,72 @@
             <td>1001</td>
             <td>项目合同总价</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{budget['1001'] > 0 ? budget['1001'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1001">{{budget['1001'] > 0 ? budget['1001'] : ''}}</span>
+              <span v-else id="ys1001"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['1001'] > 0 ? finalAccounts['1001'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1001">{{finalAccounts['1001'] > 0 ? finalAccounts['1001'] : ''}}</span>
+              <span id="js1001" v-else></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['1001'] > 0 ? financialData['1001'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1001">{{financialData['1001'] > 0 ? financialData['1001'] : ''}}</span>
+              <span v-else id="cwsj1001"></span>
             </td>
-            <td class="TextLeft"><el-input v-model="note['1001']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['1001']" size="small" id="note1001"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(0)">
             <td></td>
             <td>1001.01</td>
             <td>设备</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100101']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100101']" size="small" id="ys100101"></el-input></span>
+              <span v-else id="ys100101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['100101'] > 0 ? finalAccounts['100101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js100101">{{finalAccounts['100101'] > 0 ? finalAccounts['100101'] : ''}}</span>
+              <span v-else id="js100101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['100101'] > 0 ? financialData['100101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj100101">{{financialData['100101'] > 0 ? financialData['100101'] : ''}}</span>
+              <span v-else id="cwsj100101"></span>
             </td>
-            <td class="TextLeft"><el-input v-model="note['100101']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['100101']" size="small" id="note100101"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(0)">
             <td></td>
             <td>1001.02</td>
             <td>安装</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100102']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100102']" size="small" id="ys100102"></el-input></span>
+              <span v-else id="ys100102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['100102'] > 0 ? finalAccounts['100102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js100102">{{finalAccounts['100102'] > 0 ? finalAccounts['100102'] : ''}}</span>
+              <span v-else id="js100102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['100102'] > 0 ? financialData['100102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj100102">{{financialData['100102'] > 0 ? financialData['100102'] : ''}}</span>
+              <span v-else id="cwsj100102"></span>
             </td>
-            <td class="TextLeft"><el-input v-model="note['100102']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['100102']" size="small" id="note100102"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(0)">
             <td></td>
             <td>1001.03</td>
             <td>综合</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100103']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['100103']" size="small" id="ys100103"></el-input></span>
+              <span v-else id="ys100103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['100103'] > 0 ? finalAccounts['100103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js100103">{{finalAccounts['100103'] > 0 ? finalAccounts['100103'] : ''}}</span>
+              <span v-else id="js100103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['100103'] > 0 ? financialData['100103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj100103">{{financialData['100103'] > 0 ? financialData['100103'] : ''}}</span>
+              <span v-else id="cwsj100103"></span>
             </td>
-            <td class="TextLeft"><el-input v-model="note['100103']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['100103']" size="small" id="note100103"></el-input></td>
           </tr>
           <!-- line2 -->
           <tr class="FontBold">
@@ -243,90 +243,90 @@
             <td>1201</td>
             <td>设备及材料合计</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{budget['1201'] > 0 ? budget['1201'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1201">{{budget['1201'] > 0 ? budget['1201'] : ''}}</span>
+              <span v-else id="ys1201"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['1201'] > 0 ? finalAccounts['1201'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1201">{{finalAccounts['1201'] > 0 ? finalAccounts['1201'] : ''}}</span>
+              <span v-else id="js1201"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['1201'] > 0 ? financialData['1201'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1201">{{financialData['1201'] > 0 ? financialData['1201'] : ''}}</span>
+              <span v-else id="cwsj1201"></span>
             </td>
-            <td>{{note['1201']}}</td>
+            <td class="TextLeft">{{note['1201']}}</td>
           </tr>
           <tr @dblclick="seeDetail(1, '主设备')">
             <td></td>
             <td>1201.01</td>
             <td>主设备</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120101']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120101']" size="small" id="ys120101"></el-input></span>
+              <span v-else id="ys120101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['120101'] > 0 ? finalAccounts['120101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js120101">{{finalAccounts['120101'] > 0 ? finalAccounts['120101'] : ''}}</span>
+              <span v-else id="js120101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['120101'] > 0 ? financialData['120101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj120101">{{financialData['120101'] > 0 ? financialData['120101'] : ''}}</span>
+              <span v-else id="cwsj120101"></span>
             </td>
-            <td><el-input v-model="note['120101']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['120101']" size="small" id="note120101"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(1, '配套设备')">
             <td></td>
             <td>1201.02</td>
             <td>配套设备</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120102']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120102']" size="small" id="ys120102"></el-input></span>
+              <span v-else id="ys120102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['120102'] > 0 ? finalAccounts['120102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js120102">{{finalAccounts['120102'] > 0 ? finalAccounts['120102'] : ''}}</span>
+              <span v-else id="js120102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['120102'] > 0 ? financialData['120102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj120102">{{financialData['120102'] > 0 ? financialData['120102'] : ''}}</span>
+              <span v-else id="cwsj120102"></span>
             </td>
-            <td><el-input v-model="note['120102']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['120102']" size="small" id="note120102"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(1, '其他部件费')">
             <td></td>
             <td>1201.03</td>
             <td>其他部件费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120103']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120103']" size="small" id="ys120103"></el-input></span>
+              <span v-else id="ys120103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['120103'] > 0 ? finalAccounts['120103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js120103">{{finalAccounts['120103'] > 0 ? finalAccounts['120103'] : ''}}</span>
+              <span v-else id="js120103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['120103'] > 0 ? financialData['120103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj120103">{{financialData['120103'] > 0 ? financialData['120103'] : ''}}</span>
+              <span v-else id="cwsj120103"></span>
             </td>
-            <td><el-input v-model="note['120103']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['120103']" size="small" id="note120103"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(1, '其他材料')">
             <td></td>
             <td>1201.04</td>
             <td>其他材料</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120104']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['120104']" size="small" id="ys120104"></el-input></span>
+              <span v-else id="ys120104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['120104'] > 0 ? finalAccounts['120104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js120104">{{finalAccounts['120104'] > 0 ? finalAccounts['120104'] : ''}}</span>
+              <span v-else id="js120104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['120104'] > 0 ? financialData['120104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj120104">{{financialData['120104'] > 0 ? financialData['120104'] : ''}}</span>
+              <span v-else id="cwsj120104"></span>
             </td>
-            <td><el-input v-model="note['120104']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['120104']" size="small" id="note120104"></el-input></td>
           </tr>
           <!-- line3 -->
           <tr class="FontBold">
@@ -334,36 +334,36 @@
             <td>1301</td>
             <td>安装合计</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{budget['1301'] > 0 ? budget['1301'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1301">{{budget['1301'] > 0 ? budget['1301'] : ''}}</span>
+              <span v-else id="ys1301"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['1301'] > 0 ? finalAccounts['1301'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1301">{{finalAccounts['1301'] > 0 ? finalAccounts['1301'] : ''}}</span>
+              <span v-else id="js1301"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['1301'] > 0 ? financialData['1301'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1301">{{financialData['1301'] > 0 ? financialData['1301'] : ''}}</span>
+              <span v-else id="cwsj1301"></span>
             </td>
-            <td>{{note['1301']}}</td>
+            <td class="TextLeft">{{note['1301']}}</td>
           </tr>
           <tr>
             <td></td>
             <td>1301.01</td>
             <td>材料及人工调试费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130101']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130101']" size="small" id="ys130101"></el-input></span>
+              <span v-else id="ys130101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['130101'] > 0 ? finalAccounts['130101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js130101">{{finalAccounts['130101'] > 0 ? finalAccounts['130101'] : ''}}</span>
+              <span v-else id="js130101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['130101'] > 0 ? financialData['130101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj130101">{{financialData['130101'] > 0 ? financialData['130101'] : ''}}</span>
+              <span v-else id="cwsj130101"></span>
             </td>
-            <td><el-input v-model="note['130101']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['130101']" size="small" id="note130101"></el-input></td>
           </tr>
           <!-- <tr>
             <td></td>
@@ -388,54 +388,54 @@
             <td>1301.04</td>
             <td>外包费用</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130104']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130104']" size="small" id="ys130104"></el-input></span>
+              <span v-else id="ys130104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['130104'] > 0 ? finalAccounts['130104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js130104">{{finalAccounts['130104'] > 0 ? finalAccounts['130104'] : ''}}</span>
+              <span v-else id="js130104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['130104'] > 0 ? financialData['130104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj130104">{{financialData['130104'] > 0 ? financialData['130104'] : ''}}</span>
+              <span v-else id="cwsj130104"></span>
             </td>
-            <td><el-input v-model="note['130104']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['130104']" size="small" id="note130104"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(2, '总包配合费')">
             <td></td>
             <td>1301.05</td>
             <td>配合费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130105']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130105']" size="small" id="ys130105"></el-input></span>
+              <span v-else id="ys130105"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['130105'] > 0 ? finalAccounts['130105'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js130105">{{finalAccounts['130105'] > 0 ? finalAccounts['130105'] : ''}}</span>
+              <span v-else id="js130105"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['130105'] > 0 ? financialData['130105'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj130105">{{financialData['130105'] > 0 ? financialData['130105'] : ''}}</span>
+              <span v-else id="cwsj130105"></span>
             </td>
-            <td><el-input v-model="note['130105']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['130105']" size="small" id="note130105"></el-input></td>
           </tr>
           <tr>
             <td></td>
             <td>1301.06</td>
             <td>其他</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130106']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['130106']" size="small" id="ys130106"></el-input></span>
+              <span v-else id="ys130106"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['130106'] > 0 ? finalAccounts['130106'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js130106">{{finalAccounts['130106'] > 0 ? finalAccounts['130106'] : ''}}</span>
+              <span v-else id="js130106"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['130106'] > 0 ? financialData['130106'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj130106">{{financialData['130106'] > 0 ? financialData['130106'] : ''}}</span>
+              <span v-else id="cwsj130106"></span>
             </td>
-            <td><el-input v-model="note['130106']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['130106']" size="small" id="note130106"></el-input></td>
           </tr>
           <!-- line4 -->
           <tr class="FontBold">
@@ -443,126 +443,126 @@
             <td>1401</td>
             <td>营业费用合计</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{budget['1401'] > 0 ? budget['1401'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1401">{{budget['1401'] > 0 ? budget['1401'] : ''}}</span>
+              <span v-else id="ys1401"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['1401'] > 0 ? finalAccounts['1401'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1401">{{finalAccounts['1401'] > 0 ? finalAccounts['1401'] : ''}}</span>
+              <span v-else id="js1401"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['1401'] > 0 ? financialData['1401'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1401">{{financialData['1401'] > 0 ? financialData['1401'] : ''}}</span>
+              <span v-else id="cwsj1401"></span>
             </td>
-            <td>{{note['1401']}}</td>
+            <td class="TextLeft">{{note['1401']}}</td>
           </tr>
           <tr @dblclick="seeDetail(2, '差旅费')">
             <td></td>
             <td>1401.01</td>
             <td>差旅费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140101']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140101']" size="small" id="ys140101"></el-input></span>
+              <span v-else id="ys140101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140101'] > 0 ? finalAccounts['140101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140101">{{finalAccounts['140101'] > 0 ? finalAccounts['140101'] : ''}}</span>
+              <span v-else id="js140101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140101'] > 0 ? financialData['140101'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140101">{{financialData['140101'] > 0 ? financialData['140101'] : ''}}</span>
+              <span v-else id="cwsj140101"></span>
             </td>
-            <td><el-input v-model="note['140101']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140101']" size="small" id="note140101"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(2, '招待费')">
             <td></td>
             <td>1401.02</td>
             <td>招待费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140102']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140102']" size="small" id="ys140102"></el-input></span>
+              <span v-else id="ys140102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140102'] > 0 ? finalAccounts['140102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140102">{{finalAccounts['140102'] > 0 ? finalAccounts['140102'] : ''}}</span>
+              <span v-else id="js140102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140102'] > 0 ? financialData['140102'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140102">{{financialData['140102'] > 0 ? financialData['140102'] : ''}}</span>
+              <span v-else id="cwsj140102"></span>
             </td>
-            <td><el-input v-model="note['140102']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140102']" size="small" id="note140102"></el-input></td>
           </tr>
           <tr>
             <td></td>
             <td>1401.03</td>
             <td>标书及嗮图费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140103']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140103']" size="small" id="ys140103"></el-input></span>
+              <span v-else id="ys140103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140103'] > 0 ? finalAccounts['140103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140103">{{finalAccounts['140103'] > 0 ? finalAccounts['140103'] : ''}}</span>
+              <span v-else id="js140103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140103'] > 0 ? financialData['140103'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140103">{{financialData['140103'] > 0 ? financialData['140103'] : ''}}</span>
+              <span v-else id="cwsj140103"></span>
             </td>
-            <td><el-input v-model="note['140103']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140103']" size="small" id="note140103"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(2, '劳务费')">
             <td></td>
             <td>1401.04</td>
             <td>劳务费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140104']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140104']" size="small" id="ys140104"></el-input></span>
+              <span v-else id="ys140104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140104'] > 0 ? finalAccounts['140104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140104">{{finalAccounts['140104'] > 0 ? finalAccounts['140104'] : ''}}</span>
+              <span v-else id="js140104"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140104'] > 0 ? financialData['140104'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140104">{{financialData['140104'] > 0 ? financialData['140104'] : ''}}</span>
+              <span v-else id="cwsj140104"></span>
             </td>
-            <td><el-input v-model="note['140104']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140104']" size="small" id="note140104"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(2, '投标费')">
             <td></td>
             <td>1401.05</td>
             <td>中标服务费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140105']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140105']" size="small" id="ys140105"></el-input></span>
+              <span v-else id="ys140105"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140105'] > 0 ? finalAccounts['140105'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140105">{{finalAccounts['140105'] > 0 ? finalAccounts['140105'] : ''}}</span>
+              <span v-else id="js140105"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140105'] > 0 ? financialData['140105'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140105">{{financialData['140105'] > 0 ? financialData['140105'] : ''}}</span>
+              <span v-else id="cwsj140105"></span>
             </td>
-            <td><el-input v-model="note['140105']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140105']" size="small" id="note140105"></el-input></td>
           </tr>
           <tr @dblclick="seeDetail(2, '140106')">
             <td></td>
             <td>1401.06</td>
             <td>其他综合费用</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140106']" size="small"></el-input></span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'"><el-input v-model="budget['140106']" size="small" id="ys140106"></el-input></span>
+              <span v-else id="ys140106"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{finalAccounts['140106'] > 0 ? finalAccounts['140106'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js140106">{{finalAccounts['140106'] > 0 ? finalAccounts['140106'] : ''}}</span>
+              <span v-else id="js140106"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{financialData['140106'] > 0 ? financialData['140106'] : ''}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj140106">{{financialData['140106'] > 0 ? financialData['140106'] : ''}}</span>
+              <span v-else id="cwsj140106"></span>
             </td>
-            <td><el-input v-model="note['140106']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['140106']" size="small" id="note140106"></el-input></td>
           </tr>
           <!-- line5 -->
           <tr class="FontBold">
@@ -571,144 +571,144 @@
             <td>1501</td>
             <td>税费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(budget['1001'] * rateCompany)) + (Number(budget['1001'] * 0.0003)) + (Number(budget['1001'] * rateManagement))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1501">{{(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(budget['1001'] * rateCompany)) + (Number(budget['1001'] * 0.0003)) + (Number(budget['1001'] * rateManagement))).toFixed(2)}}</span>
+              <span v-else id="ys1501"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(finalAccounts['1001'] * rateCompany)) + (Number(finalAccounts['1001'] * 0.0003)) + (Number(finalAccounts['1001'] * rateManagement))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1501">{{(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(finalAccounts['1001'] * rateCompany)) + (Number(finalAccounts['1001'] * 0.0003)) + (Number(finalAccounts['1001'] * rateManagement))).toFixed(2)}}</span>
+              <span v-else id="js1501"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(financialData['1001'] * rateCompany)) + (Number(financialData['1001'] * 0.0003)) + (Number(financialData['1001'] * rateManagement))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1501">{{(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + 0 + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + 0 + (Number(financialData['1001'] * rateCompany)) + (Number(financialData['1001'] * 0.0003)) + (Number(financialData['1001'] * rateManagement))).toFixed(2)}}</span>
+              <span v-else id="cwsj1501"></span>
             </td>
-            <td>{{note['1501']}}</td>
+            <td class="TextLeft">{{note['1501']}}</td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.01</td>
             <td>增值税 13%</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150101">{{formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="ys150101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150101">{{formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="js150101"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150101">{{formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="cwsj150101"></span>
             </td>
-            <td><el-input v-model="note['150101']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['150101']" size="small" id="note150101"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.02</td>
             <td>增值税 3%</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150102">{{formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="ys150102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150102">{{formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="js150102"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150102">{{formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="cwsj150102"></span>
             </td>
-            <td><el-input v-model="note['170102']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170102']" size="small" id="note150102"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.03</td>
             <td>增值税 9%</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150103">{{formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="ys150103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150103">{{formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="js150103"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150103">{{formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0}}</span>
+              <span v-else id="cwsj150103"></span>
             </td>
-            <td><el-input v-model="note['170103']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170103']" size="small" id="note150103"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.12</td>
             <td>税金附加</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150112">{{(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
+              <span v-else id="ys150112"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150112">{{(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
+              <span v-else id="js150112"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150112">{{(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0}}</span>
+              <span v-else id="cwsj150112"></span>
             </td>
-            <td><el-input v-model="note['170112']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170112']" size="small" id="note150112"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.13</td>
             <td>企业所得税</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(Number(budget['1001']) * rateCompany).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150113">{{(Number(budget['1001']) * rateCompany).toFixed(2)}}</span>
+              <span v-else id="ys150113"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(finalAccounts['1001']) * rateCompany).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150113">{{(Number(finalAccounts['1001']) * rateCompany).toFixed(2)}}</span>
+              <span v-else id="js150113"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(financialData['1001']) * rateCompany).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150113">{{(Number(financialData['1001']) * rateCompany).toFixed(2)}}</span>
+              <span v-else id="cwsj150113"></span>
             </td>
-            <td><el-input v-model="note['170113']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170113']" size="small" id="note150113"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.14</td>
             <td>印花税</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(Number(budget['1001']) * 0.0003).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150114">{{(Number(budget['1001']) * 0.0003).toFixed(2)}}</span>
+              <span v-else id="ys150114"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(finalAccounts['1001']) * 0.0003).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150114">{{(Number(finalAccounts['1001']) * 0.0003).toFixed(2)}}</span>
+              <span v-else id="js150114"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(financialData['1001']) * 0.0003).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150114">{{(Number(financialData['1001']) * 0.0003).toFixed(2)}}</span>
+              <span v-else id="cwsj150114"></span>
             </td>
-            <td><el-input v-model="note['170114']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170114']" size="small" id="note150114"></el-input></td>
           </tr>
           <tr v-if="ifShow">
             <td></td>
             <td>1501.15</td>
             <td>管理费</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(Number(budget['1001']) * rateManagement).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys150115">{{(Number(budget['1001']) * rateManagement).toFixed(2)}}</span>
+              <span v-else id="ys150115"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(finalAccounts['1001']) * rateManagement).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js150115">{{(Number(finalAccounts['1001']) * rateManagement).toFixed(2)}}</span>
+              <span v-else id="js150115"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(financialData['1001']) * rateManagement).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj150115">{{(Number(financialData['1001']) * rateManagement).toFixed(2)}}</span>
+              <span v-else id="cwsj150115"></span>
             </td>
-            <td><el-input v-model="note['170115']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['170115']" size="small" id="note150115"></el-input></td>
           </tr>
           <!-- line6 -->
           <tr>
@@ -716,28 +716,28 @@
             <td>1601</td>
             <td>毛利润</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{(Number(budget['1001']) - Number(budget['1201']) - Number(budget['1301']) - Number(budget['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(budget['1001']) * rateCompany).toFixed(2)) + Number((Number(budget['1001']) * 0.0003).toFixed(2)) + Number((Number(budget['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1601">{{(Number(budget['1001']) - Number(budget['1201']) - Number(budget['1301']) - Number(budget['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(budget['1001']) * rateCompany).toFixed(2)) + Number((Number(budget['1001']) * 0.0003).toFixed(2)) + Number((Number(budget['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
+              <span v-else id="ys1601"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(finalAccounts['1001']) - Number(finalAccounts['1201']) - Number(finalAccounts['1301']) - Number(finalAccounts['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(finalAccounts['1001']) * rateCompany).toFixed(2)) + Number((Number(finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(finalAccounts['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="js1601">{{(Number(finalAccounts['1001']) - Number(finalAccounts['1201']) - Number(finalAccounts['1301']) - Number(finalAccounts['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(finalAccounts['1001']) * rateCompany).toFixed(2)) + Number((Number(finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(finalAccounts['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
+              <span v-else id="js1601"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_127 == 'True'">{{(Number(financialData['100101']) - Number(financialData['1201']) - Number(financialData['1301']) - Number(financialData['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(financialData['1001']) * rateCompany).toFixed(2)) + Number((Number(financialData['1001']) * 0.0003).toFixed(2)) + Number((Number(financialData['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_127 == 'True'" id="cwsj1601">{{(Number(financialData['100101']) - Number(financialData['1201']) - Number(financialData['1301']) - Number(financialData['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(financialData['1001']) * rateCompany).toFixed(2)) + Number((Number(financialData['1001']) * 0.0003).toFixed(2)) + Number((Number(financialData['1001']) * rateManagement).toFixed(2)))).toFixed(2)}}</span>
+              <span v-else id="cwsj1601"></span>
             </td>
-            <td><el-input v-model="note['1601']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['1601']" size="small" id="note1601"></el-input></td>
           </tr>
           <!-- line7 -->
           <tr>
             <td>7</td>
             <td>1701</td>
             <td>资金占用</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{note['1701']}}</td>
+            <td id="ys1701"></td>
+            <td id="js1701"></td>
+            <td id="cwsj1701"></td>
+            <td class="TextLeft" id="note1701">{{note['1701']}}</td>
           </tr>
           <!-- line8 -->
           <tr>
@@ -745,24 +745,25 @@
             <td>1801</td>
             <td>毛利率</td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{!Number(budget['1001']) ? 0 : (((Number(budget['1001']) - Number(budget['1201']) - Number(budget['1301']) - Number(budget['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(budget['1001']) * rateCompany).toFixed(2)) + Number((Number(budget['1001']) * 0.0003).toFixed(2)) + Number((Number(budget['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(budget['1001']) * 100).toFixed(2)}}%</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="ys1801">{{!Number(budget['1001']) ? 0 : (((Number(budget['1001']) - Number(budget['1201']) - Number(budget['1301']) - Number(budget['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(budget['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(budget['1001']) / 1.09 * 0.09 - Number(budget['1201']) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(budget['1001']) - Number(budget['1201'])) / 1.13 * 0.13 - Number(budget['130102']) / 1.09 * 0.09 - Number(budget['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(budget['1001']) * rateCompany).toFixed(2)) + Number((Number(budget['1001']) * 0.0003).toFixed(2)) + Number((Number(budget['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(budget['1001']) * 100).toFixed(2)}}%</span>
+              <span v-else id="ys1801"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{!Number(finalAccounts['1001']) ? 0 : (((Number(finalAccounts['1001']) - Number(finalAccounts['1201']) - Number(finalAccounts['1301']) - Number(finalAccounts['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(finalAccounts['1001']) * rateCompany).toFixed(2)) + Number((Number(finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(finalAccounts['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(finalAccounts['1001']) * 100).toFixed(2)}}%</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="js1801">{{!Number(finalAccounts['1001']) ? 0 : (((Number(finalAccounts['1001']) - Number(finalAccounts['1201']) - Number(finalAccounts['1301']) - Number(finalAccounts['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(finalAccounts['1001']) / 1.09 * 0.09 - Number(finalAccounts['1201']) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(finalAccounts['1001']) - Number(finalAccounts['1201'])) / 1.13 * 0.13 - Number(finalAccounts['130102']) / 1.09 * 0.09 - Number(finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(finalAccounts['1001']) * rateCompany).toFixed(2)) + Number((Number(finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(finalAccounts['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(finalAccounts['1001']) * 100).toFixed(2)}}%</span>
+              <span v-else id="js1801"></span>
             </td>
             <td>
-              <span v-if="userInfo.F_126 == 'True'">{{!Number(financialData['100101']) ? 0 : (((Number(financialData['100101']) - Number(financialData['1201']) - Number(financialData['1301']) - Number(financialData['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(financialData['1001']) * rateCompany).toFixed(2)) + Number((Number(financialData['1001']) * 0.0003).toFixed(2)) + Number((Number(financialData['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(financialData['100101']) * 100).toFixed(2)}}%</span>
-              <span v-else></span>
+              <span v-if="userInfo.F_126 == 'True'" id="cwsj1801">{{!Number(financialData['100101']) ? 0 : (((Number(financialData['100101']) - Number(financialData['1201']) - Number(financialData['1301']) - Number(financialData['1401']) - Number(Number(formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (formBudget.rate == 'A' ? ((Number(financialData['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'B' ? ((Number(financialData['1001']) / 1.09 * 0.09 - Number(financialData['1201']) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (formBudget.rate == 'C' ? (((Number(financialData['1001']) - Number(financialData['1201'])) / 1.13 * 0.13 - Number(financialData['130102']) / 1.09 * 0.09 - Number(financialData['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(financialData['1001']) * rateCompany).toFixed(2)) + Number((Number(financialData['1001']) * 0.0003).toFixed(2)) + Number((Number(financialData['1001']) * rateManagement).toFixed(2)))).toFixed(2)) / Number(financialData['100101']) * 100).toFixed(2)}}%</span>
+              <span v-else id="cwsj1801"></span>
             </td>
-            <td><el-input v-model="note['1801']" size="small"></el-input></td>
+            <td class="TextLeft"><el-input v-model="note['1801']" size="small" id="note1801"></el-input></td>
           </tr>
         </tbody>
       </table>
     </section>
     <section class="MarginT_20 MarginB_20">
       <el-button type="info" size="mini" @click="back">返 回</el-button>
+      <el-button @click="exportExcel" type="success" size="mini">导出</el-button>
       <el-button @click="doPrint" type="primary" size="mini">打印</el-button>
       <el-button v-if="formBudget.status == '未审核'" type="danger" size="mini" :loading="btLoading" @click="save('formBudget')">保 存</el-button>
     </section>
@@ -781,6 +782,10 @@
         <el-button @click="dialogVisibleDetails = false">关 闭</el-button>
       </span>
     </el-dialog>
+    <!-- print -->
+    <div style="position:relative;top:0;z-index: -99999;">
+      <Print v-if="ifPrint" ref="printChild" @hidePrint="hidePrint" :userInfo='userInfo' :rateCompany='rateCompany' :rateManagement='rateManagement' :formBudget="formBudget" :budget="budget" :finalAccounts="finalAccounts" :financialData="financialData" :note="note" :timeStamp="timeStamp"/>
+    </div>
   </div>
 </template>
 
@@ -790,13 +795,16 @@ import { mapState } from 'vuex'
 import Fee from '../../components/Budget/Fee'
 import Cost from '../../components/Budget/Cost'
 import Outlay from '../../components/Budget/Outlay'
+import Print from '../../components/Budget/Print'
 export default {
   name: 'BudgetDetail',
   data () {
     return {
       loading: false,
       btLoading: false,
+      ifShowPrint: false,
       dialogVisibleDetails: false,
+      ifPrint: false,
       timeStamp: '',
       ifShow: true,
       detailType: 0, // 0 - 1001三行 1 - 成本 2 - 费用
@@ -1212,7 +1220,8 @@ export default {
   components: {
     Fee,
     Cost,
-    Outlay
+    Outlay,
+    Print
   },
   created () {
     this.getCompanyName()
@@ -1220,15 +1229,67 @@ export default {
     this.getDetail()
   },
   methods: {
+    exportExcel () {
+      let dataAll = [
+        {'序号': '公司名称', 'column': this.formBudget['公司名称'], '分类款项': '客户名称', '预算': this.formBudget['客户名称'], '决算': '编制日期', '财务数据': this.formBudget['编制日期'], '备注': ''},
+        {'序号': '事业部', 'column': this.formBudget['事业部'], '分类款项': '项目名称', '预算': this.formBudget['项目名称'], '决算': '竣工日期', '财务数据': this.formBudget['竣工日期'], '备注': ''},
+        {'序号': '销售员', 'column': this.formBudget['销售员'], '分类款项': '项目经理', '预算': this.formBudget['项目经理'], '决算': '项目类别', '财务数据': this.formBudget['项目类别'], '备注': ''},
+        {'序号': '税率', 'column': this.formBudget['税率'], '分类款项': '利率', '预算': this.formBudget['利率'], '决算': '', '财务数据': '', '备注': ''},
+        {'序号': '', 'column': '', '分类款项': '', '预算': '', '决算': '', '财务数据': '', '备注': ''},
+        {'序号': '序号', 'column': '', '分类款项': '分类款项', '预算': '预算', '决算': '决算', '财务数据': '财务数据', '备注': '备注'},
+        // data
+        {'序号': '1', 'column': '1001', '分类款项': '项目合同总价', '预算': document.getElementById('ys1001').innerHTML, '决算': document.getElementById('js1001').innerHTML, '财务数据': document.getElementById('cwsj1001').innerHTML, '备注': document.getElementById('note1001').value},
+        {'序号': '', 'column': '1001.01', '分类款项': '设备', '预算': document.getElementById('ys100101').value, '决算': document.getElementById('js100101').innerHTML, '财务数据': document.getElementById('cwsj100101').innerHTML, '备注': document.getElementById('note100101').value},
+        {'序号': '', 'column': '1001.02', '分类款项': '安装', '预算': document.getElementById('ys100102').value, '决算': document.getElementById('js100102').innerHTML, '财务数据': document.getElementById('cwsj100102').innerHTML, '备注': document.getElementById('note100102').value},
+        {'序号': '', 'column': '1001.03', '分类款项': '综合', '预算': document.getElementById('ys100103').value, '决算': document.getElementById('js100103').innerHTML, '财务数据': document.getElementById('cwsj100103').innerHTML, '备注': document.getElementById('note100103').value},
+        {'序号': '2', 'column': '1201', '分类款项': '设备及材料合计', '预算': document.getElementById('ys1201').innerHTML, '决算': document.getElementById('js1201').innerHTML, '财务数据': document.getElementById('cwsj1201').innerHTML, '备注': ''},
+        {'序号': '', 'column': '1201.01', '分类款项': '主设备', '预算': document.getElementById('ys120101').value, '决算': document.getElementById('js120101').innerHTML, '财务数据': document.getElementById('cwsj120101').innerHTML, '备注': document.getElementById('note120101').value},
+        {'序号': '', 'column': '1201.02', '分类款项': '配套设备', '预算': document.getElementById('ys120102').value, '决算': document.getElementById('js120102').innerHTML, '财务数据': document.getElementById('cwsj120102').innerHTML, '备注': document.getElementById('note120102').value},
+        {'序号': '', 'column': '1201.03', '分类款项': '其他部件费', '预算': document.getElementById('ys120103').value, '决算': document.getElementById('js120103').innerHTML, '财务数据': document.getElementById('cwsj120103').innerHTML, '备注': document.getElementById('note120103').value},
+        {'序号': '', 'column': '1201.04', '分类款项': '其他材料', '预算': document.getElementById('ys120104').value, '决算': document.getElementById('js120104').innerHTML, '财务数据': document.getElementById('cwsj120104').innerHTML, '备注': document.getElementById('note120104').value},
+        {'序号': '3', 'column': '1301', '分类款项': '安装合计', '预算': document.getElementById('ys1301').innerHTML, '决算': document.getElementById('js1301').innerHTML, '财务数据': document.getElementById('cwsj1301').innerHTML, '备注': ''},
+        {'序号': '', 'column': '1301.01', '分类款项': '材料及人工调试费', '预算': document.getElementById('ys130101').value, '决算': document.getElementById('js130101').innerHTML, '财务数据': document.getElementById('cwsj130101').innerHTML, '备注': document.getElementById('note130101').value},
+        {'序号': '', 'column': '1301.04', '分类款项': '外包费用', '预算': document.getElementById('ys130104').value, '决算': document.getElementById('js130104').innerHTML, '财务数据': document.getElementById('cwsj130104').innerHTML, '备注': document.getElementById('note130104').value},
+        {'序号': '', 'column': '1301.05', '分类款项': '配合费', '预算': document.getElementById('ys130105').value, '决算': document.getElementById('js130105').innerHTML, '财务数据': document.getElementById('cwsj130105').innerHTML, '备注': document.getElementById('note130105').value},
+        {'序号': '', 'column': '1301.06', '分类款项': '其他', '预算': document.getElementById('ys130106').value, '决算': document.getElementById('js130106').innerHTML, '财务数据': document.getElementById('cwsj130106').innerHTML, '备注': document.getElementById('note130106').value},
+        {'序号': '4', 'column': '1401', '分类款项': '营业费用合计', '预算': document.getElementById('ys1401').innerHTML, '决算': document.getElementById('js1401').innerHTML, '财务数据': document.getElementById('cwsj1401').innerHTML, '备注': ''},
+        {'序号': '', 'column': '1401.01', '分类款项': '差旅费', '预算': document.getElementById('ys140101').value, '决算': document.getElementById('js140101').innerHTML, '财务数据': document.getElementById('cwsj140101').innerHTML, '备注': document.getElementById('note140101').value},
+        {'序号': '', 'column': '1401.02', '分类款项': '招待费', '预算': document.getElementById('ys140102').value, '决算': document.getElementById('js140102').innerHTML, '财务数据': document.getElementById('cwsj140102').innerHTML, '备注': document.getElementById('note140102').value},
+        {'序号': '', 'column': '1401.03', '分类款项': '标书及嗮图费', '预算': document.getElementById('ys140103').value, '决算': document.getElementById('js140103').innerHTML, '财务数据': document.getElementById('cwsj140103').innerHTML, '备注': document.getElementById('note140103').value},
+        {'序号': '', 'column': '1401.04', '分类款项': '劳务费', '预算': document.getElementById('ys140104').value, '决算': document.getElementById('js140104').innerHTML, '财务数据': document.getElementById('cwsj140104').innerHTML, '备注': document.getElementById('note140104').value},
+        {'序号': '', 'column': '1401.05', '分类款项': '中标服务费', '预算': document.getElementById('ys140105').value, '决算': document.getElementById('js140105').innerHTML, '财务数据': document.getElementById('cwsj140105').innerHTML, '备注': document.getElementById('note140105').value},
+        {'序号': '', 'column': '1401.06', '分类款项': '其他综合费用', '预算': document.getElementById('ys140106').value, '决算': document.getElementById('js140106').innerHTML, '财务数据': document.getElementById('cwsj140106').innerHTML, '备注': document.getElementById('note140106').value},
+        {'序号': '5', 'column': '1501', '分类款项': '税费', '预算': document.getElementById('ys1501').innerHTML, '决算': document.getElementById('js1501').innerHTML, '财务数据': document.getElementById('cwsj1501').innerHTML, '备注': ''},
+        {'序号': '', 'column': '1501.01', '分类款项': '增值税 13%', '预算': document.getElementById('ys150101').innerHTML, '决算': document.getElementById('js150101').innerHTML, '财务数据': document.getElementById('cwsj150101').innerHTML, '备注': document.getElementById('note150101').value},
+        {'序号': '', 'column': '1501.02', '分类款项': '增值税 3%', '预算': document.getElementById('ys150102').innerHTML, '决算': document.getElementById('js150102').innerHTML, '财务数据': document.getElementById('cwsj150102').innerHTML, '备注': document.getElementById('note150102').value},
+        {'序号': '', 'column': '1501.03', '分类款项': '增值税 9%', '预算': document.getElementById('ys150103').innerHTML, '决算': document.getElementById('js150103').innerHTML, '财务数据': document.getElementById('cwsj150103').innerHTML, '备注': document.getElementById('note150103').value},
+        {'序号': '', 'column': '1501.12', '分类款项': '税金附加', '预算': document.getElementById('ys150112').innerHTML, '决算': document.getElementById('js150112').innerHTML, '财务数据': document.getElementById('cwsj150112').innerHTML, '备注': document.getElementById('note150112').value},
+        {'序号': '', 'column': '1501.13', '分类款项': '企业所得税', '预算': document.getElementById('ys150113').innerHTML, '决算': document.getElementById('js150113').innerHTML, '财务数据': document.getElementById('cwsj150113').innerHTML, '备注': document.getElementById('note150113').value},
+        {'序号': '', 'column': '1501.14', '分类款项': '印花税', '预算': document.getElementById('ys150114').innerHTML, '决算': document.getElementById('js150114').innerHTML, '财务数据': document.getElementById('cwsj150114').innerHTML, '备注': document.getElementById('note150114').value},
+        {'序号': '', 'column': '1501.15', '分类款项': '管理费', '预算': document.getElementById('ys150115').innerHTML, '决算': document.getElementById('js150115').innerHTML, '财务数据': document.getElementById('cwsj150115').innerHTML, '备注': document.getElementById('note150115').value},
+        {'序号': '6', 'column': '1601', '分类款项': '毛利润', '预算': document.getElementById('ys1601').innerHTML, '决算': document.getElementById('js1601').innerHTML, '财务数据': document.getElementById('cwsj1601').innerHTML, '备注': document.getElementById('note1601').value},
+        {'序号': '7', 'column': '1701', '分类款项': '资金占用', '预算': document.getElementById('ys1701').innerHTML, '决算': document.getElementById('js1701').innerHTML, '财务数据': document.getElementById('cwsj1701').innerHTML, '备注': ''},
+        {'序号': '8', 'column': '1801', '分类款项': '毛利率', '预算': document.getElementById('ys1801').innerHTML, '决算': document.getElementById('js1801').innerHTML, '财务数据': document.getElementById('cwsj1801').innerHTML, '备注': document.getElementById('note1801').value}
+      ]
+      require.ensure([], () => {
+        const { exportJsonToExcel } = require('../../vendor/Export2Excel.js')
+        const tHeader = ['', '', '', '工程项目预决算表', '', '', '']
+        const filterVal = ['序号', 'column', '分类款项', '预算', '决算', '财务数据', '备注']
+        const data = this.formatJson(filterVal, dataAll)
+        exportJsonToExcel(tHeader, data, '工程项目预决算表')
+      })
+    },
+    formatJson (filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => v[j]))
+    },
     doPrint () {
-      this.$print(this.$refs.print)
-      // var bdhtml = window.document.body.innerHTML
-      // var sprnstr = '<!--startprint-->'
-      // var eprnstr = '<!--endprint-->'
-      // var prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17)
-      // prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr))
-      // window.document.body.innerHTML = prnhtml
-      // window.print()
+      this.ifPrint = true
+      setTimeout(() => {
+        this.$refs.printChild.doPrint()
+      }, 100)
+    },
+    hidePrint () {
+      this.ifPrint = false
     },
     toggleShow () {
       // this.ifShow = !this.ifShow
@@ -1535,6 +1596,8 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
+        console.log('z_finaldetail', Info)
+        
         if (Info.length > 0) {
           console.log('getFinalAccounts', Info)
           this.note['130104'] = Info[0]['外包合同金额']
@@ -1804,8 +1867,20 @@ export default {
             projectCategory: Info[0].FTypeID,
             rate: Info[0]['税率'],
             rateInput: Info[0]['利率'],
-            status: Info[0]['审核状态']
+            status: Info[0]['审核状态'],
+            '公司名称': Info[0]['公司名称'],
+            '客户名称': Info[0]['客户名称'],
+            '编制日期': Info[0]['编制日期'],
+            '事业部': Info[0]['部门'],
+            '项目名称': Info[0]['项目名称'],
+            '竣工日期': Info[0]['竣工日期'],
+            '销售员': Info[0]['销售员'],
+            '项目经理': Info[0]['项目经理'],
+            '项目类别': Info[0]['项目类别'],
+            '税率': Info[0]['税率'],
+            '利率': Info[0]['利率']
           }
+          console.log(this.formBudget)
           this.finalAccounts = {
             '1001': '',
             '100101': Info[1]['1001.01'],
@@ -1977,6 +2052,7 @@ export default {
 #budget td{
   padding-left: 5px;
   text-align: center;
+  overflow: hidden;
 }
 .BudgetDetail{
   background: #fff;

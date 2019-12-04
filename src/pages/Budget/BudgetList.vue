@@ -10,6 +10,9 @@
           <el-form-item label="事业部" size="mini">
             <el-input v-model="filterDepartment_budget" size="mini" placeholder="请输入事业部" clearable style="width: 130px;"></el-input>
           </el-form-item>
+          <el-form-item label="预算年" size="mini">
+            <el-input v-model="filterYear_budget" size="mini" placeholder="请输入预算年" clearable style="width: 130px;"></el-input>
+          </el-form-item>
           <el-form-item label="预算月" size="mini">
             <el-select v-model="filterMonth_budget" size="mini" placeholder="请选择" style="width: 100px;">
               <el-option
@@ -204,6 +207,14 @@ export default {
         this.$store.state.filterDepartment_budget = newValue
       }
     },
+    filterYear_budget: {
+      get: function () {
+        return this.$store.state.filterYear_budget
+      },
+      set: function (newValue) {
+        this.$store.state.filterYear_budget = newValue
+      }
+    },
     filterMonth_budget: {
       get: function () {
         return this.$store.state.filterMonth_budget
@@ -371,7 +382,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL><![CDATA[exec [Z_FinalReport] '" + this.filterProjectName_budget + "','" + this.filterCompanyName_budget + "','" + this.filterDepartment_budget + "','" + this.filterSalesMan_budget + "','" + this.filterMonth_budget + "'," + this.userInfo.fempid + ']]></FSQL>'
+        tmpData += "<FSQL><![CDATA[exec [Z_FinalReport] '" + this.filterProjectName_budget + "','" + this.filterCompanyName_budget + "','" + this.filterDepartment_budget + "','" + this.filterSalesMan_budget + "','" + this.filterYear_budget + "','" + this.filterMonth_budget + "'," + this.userInfo.fempid + ']]></FSQL>'
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -400,7 +411,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += "<FSQL><![CDATA[exec [Z_FinalList] '" + this.filterProjectName_budget + "','" + this.filterCompanyName_budget + "','" + this.filterDepartment_budget + "','" + this.filterSalesMan_budget + "','" + this.filterMonth_budget + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.curPage * this.pageSize + ',' + this.userInfo.fempid + ']]></FSQL>'
+      tmpData += "<FSQL><![CDATA[exec [Z_FinalList] '" + this.filterProjectName_budget + "','" + this.filterCompanyName_budget + "','" + this.filterDepartment_budget + "','" + this.filterSalesMan_budget + "','" + this.filterYear_budget + "','" + this.filterMonth_budget + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.curPage * this.pageSize + ',' + this.userInfo.fempid + ']]></FSQL>'
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -417,7 +428,6 @@ export default {
         let xmlData = this.$x2js.xml2js(res.data)
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
-        // console.log(Info)
         if (Info.length > 0) {
           this.tableData = Info
           this.sum = Info[0].fcount

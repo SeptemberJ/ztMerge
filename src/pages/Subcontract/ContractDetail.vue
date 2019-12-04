@@ -770,7 +770,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from t_Item where fitemclassid=3001 and fname like '%" + val + "%' order by fnumber]]></FSQL>"
+        tmpData += "<FSQL><![CDATA[select top 50 fitemid,fname from z_project where fname like '%" + val + "%' order by fnumber]]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'

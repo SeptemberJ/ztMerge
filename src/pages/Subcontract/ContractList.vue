@@ -334,7 +334,7 @@ export default {
       require.ensure([], () => {
         const { exportJsonToExcel } = require('../../vendor/Export2Excel.js')
         const tHeader = ['合同日期', '合同号', '项目编号', '施工队', '安装金额', '材料金额', '材料结算', '合计', '已付金额', '剩余应付', '已付比例', '合同名称', '所属公司', '部门', '业务员']
-        const filterVal = ['合同日期', '合同号', '项目编号', '施工队', '安装金额', '材料金额', '材料结算', '合计', '已付金额', '剩余应付', '已付比例', '合同名称', '所属公司', '部门', '业务员']
+        const filterVal = ['合同日期', '合同号', '项目编号', '施工队', '安装费', '材料金额', '材料结算', '合计', '已付金额', '剩余应付', '已付比例', '合同名称', '所属公司', '部门', '业务员']
         const data = this.formatJson(filterVal, dataAll)
         exportJsonToExcel(tHeader, data, '分包合同')
       })

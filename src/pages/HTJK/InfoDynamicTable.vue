@@ -345,7 +345,15 @@ export default {
       curContractNo: state => state.curContractNo,
       curDB: state => state.curDB,
       userInfo: state => state.userInfo
-    })
+    }),
+    formFilter: {
+      get: function () {
+        return this.$store.state.formFilter
+      },
+      set: function (newValue) {
+        this.$store.state.formFilter = newValue
+      }
+    }
   },
   created () {
     this.getInfor()
@@ -613,12 +621,21 @@ export default {
       })
     },
     getMainInfo () {
+      let contractSumS = "''"
+      let contractSumE = "''"
+      if (this.formFilter.contractSumS) {
+        contractSumS = this.formFilter.contractSumS
+      }
+      if (this.formFilter.contractSumE) {
+        contractSumE = this.formFilter.contractSumE
+      }
       return new Promise((resolve, reject) => {
         var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL><![CDATA[SELECT * FROM Z_Contract WHERE  合同号='" + this.curContractNo + "' and 账套名='" + this.curDB + "']]></FSQL>"
+        tmpData += "<FSQL>exec [Z_ContractList_detail] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + this.userInfo.fempid + '</FSQL>'
+        // tmpData += "<FSQL><![CDATA[SELECT * FROM Z_Contract WHERE  合同号='" + this.curContractNo + "' and 账套名='" + this.curDB + "']]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'
         tmpData += '</soap:Envelope>'
@@ -636,6 +653,7 @@ export default {
           let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
           let Info = (JSON.parse(Result))[0]
           resolve(Info)
+          console.log('detail', Info)
         }).catch((error) => {
           console.log(error)
         })

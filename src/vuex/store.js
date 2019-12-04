@@ -18,6 +18,7 @@ const state = {
   budgetId: null,
   filterCompanyName_budget: '',
   filterDepartment_budget: '',
+  filterYear_budget: '',
   filterMonth_budget: '',
   filterSalesMan_budget: '',
   filterProjectName_budget: '',

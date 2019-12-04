@@ -150,3 +150,15 @@ td .el-input__inner{
   background: #f7f7f7;
   border: 1px solid #f7f7f7;
 }
+.Print .el-form-item__content span{
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #DCDFE6;
+}
+.TextLeft{
+  text-align: left !important;
+}
+.TextLeft .el-input__inner{
+  text-align: left !important;
+}

@@ -400,13 +400,13 @@
             show-overflow-tooltip>
           </el-table-column>
           <el-table-column
-            prop="费用金额2"
+            prop="费用合计"
             label="费用金额"
             width="150"
             show-overflow-tooltip>
           </el-table-column>
           <el-table-column
-            prop="成本2"
+            prop="成本合计"
             label="成本"
             width="150"
             show-overflow-tooltip>
@@ -520,6 +520,7 @@
             show-overflow-tooltip>
           </el-table-column> -->
         </el-table>
+        <el-button type="success" size="mini" @click="exportExcel" style="float:left;margin-top:15px;margin-left: 20px;">导出</el-button>
         <el-pagination style="float: right;margin-top: 15px;padding-right: 20px;"
           @current-change="handleCurrentChange"
           :current-page.sync="curPage"
@@ -534,7 +535,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-// import { Loading } from 'element-ui'
+import { Loading } from 'element-ui'
 // import $ from 'jquery'
 export default {
   name: 'FilterTable',
@@ -765,7 +766,7 @@ export default {
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
       tmpData += '<soap:Body> '
       tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-      tmpData += "<FSQL>exec [Z_ContractList_test] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.pageSize * this.curPage + ',' + this.userInfo.fempid + ",'" + this.formFilter.sort + "'</FSQL>"
+      tmpData += "<FSQL>exec [Z_ContractList_test1] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + Number((this.curPage - 1) * this.pageSize + 1) + ',' + this.pageSize * this.curPage + ',' + this.userInfo.fempid + ",'" + this.formFilter.sort + "'</FSQL>"
       tmpData += '</JA_LIST>'
       tmpData += '</soap:Body>'
       tmpData += '</soap:Envelope>'
@@ -791,8 +792,8 @@ export default {
         this.resultData = Info.map(item => {
           item['开工日期'] = item['开工日期'] ? item['开工日期'].slice(0, 10) : ''
           item['完工日期'] = item['完工日期'] ? item['完工日期'].slice(0, 10) : ''
-          item['费用金额2'] = item['费用金额'] ? item['费用金额'].toFixed(2) : ''
-          item['成本2'] = item['成本'] ? item['成本'].toFixed(2) : ''
+          // item['费用合计'] = item['费用金额'] ? item['费用金额'].toFixed(2) : ''
+          // item['成本合计'] = item['成本合计'] ? item['成本合计'].toFixed(2) : ''
           return item
         })
         this.loading = false
@@ -914,6 +915,65 @@ export default {
       } else {
         this.resultData = []
       }
+    },
+    // 导出
+    async exportExcel () {
+      let exportData = await this.getExportData()
+      require.ensure([], () => {
+        const { exportJsonToExcel } = require('../../vendor/Export2Excel.js')
+        const tHeader = ['签约日期', '客户', '项目名称', '隶属公司', '合同金额', '结算金额', '累计开票', '累计收款', '剩余未收', '预算毛利率', '毛利率', '费用金额', '成本', '施工合同', '出货率', '收款率', '部门', '商务人员', '项目经理', '开工日期', '完工日期', '审计价', '竣工日期', '质保期', '质保起', '质保结束', '合同号', '项目编号', '数据提取公司', '放号', '合同签订', '进场施工', '设备到现场', '隐蔽验收', '安装调试', '竣工验收', '审价结算', '项目移交', '质保开始', '质保结束', '第一季度', '第二季度', '第三季度', '第四季度', '合同到期']
+        const filterVal = ['签约日期', '客户', '项目名称', '隶属公司', '合同金额', '结算价', '累计开票', '累计收款', '未收金额', '预算毛利率', '毛利率', '费用合计', '成本合计', '施工合同', '出货率', '收款率', '部门', '商务人员', '项目经理', '开工日期', '完工日期', '审计价', '竣工日期', '质保期', '质保起', '质保至', '合同号', '项目编号', '账套名', 'ftype1', 'ftype2', 'ftype3', 'ftype4', 'ftype5', 'ftype6', 'ftype7', 'ftype8', 'ftype9', 'ftype10', 'ftype11', 'ftype12', 'ftype13', 'ftype14', 'ftype15', 'ftype16']
+        const data = this.formatJson(filterVal, exportData)
+        exportJsonToExcel(tHeader, data, '项目进度管理列表')
+      })
+    },
+    formatJson (filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => v[j]))
+    },
+    getExportData () {
+      return new Promise((resolve, reject) => {
+        let loadingInstance = Loading.service({
+          lock: true,
+          text: '正在获取数据并导出,请稍后',
+          spinner: 'el-icon-loading'
+        })
+        let contractSumS = "''"
+        let contractSumE = "''"
+        if (this.formFilter.contractSumS) {
+          contractSumS = this.formFilter.contractSumS
+        }
+        if (this.formFilter.contractSumE) {
+          contractSumE = this.formFilter.contractSumE
+        }
+        var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
+        tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
+        tmpData += '<soap:Body> '
+        tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
+        tmpData += "<FSQL>exec [Z_ContractList_report] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + this.userInfo.fempid + ",'" + this.formFilter.sort + "'</FSQL>"
+        tmpData += '</JA_LIST>'
+        tmpData += '</soap:Body>'
+        tmpData += '</soap:Envelope>'
+        this.Http.post('JA_LIST', tmpData
+        ).then(res => {
+          // 解析
+          let xmlData = this.$x2js.xml2js(res.data)
+          let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
+          let Info = JSON.parse(Result)
+          Info.map(item => {
+            item['开工日期'] = item['开工日期'] ? item['开工日期'].slice(0, 10) : ''
+            item['完工日期'] = item['完工日期'] ? item['完工日期'].slice(0, 10) : ''
+            // item['费用合计'] = item['费用合计'] ? item['费用合计'].toFixed(2) : ''
+            // item['成本合计'] = item['成本合计'] ? item['成本合计'].toFixed(2) : ''
+            return item
+          })
+          resolve(Info)
+          loadingInstance.close()
+        }).catch((error) => {
+          console.log(error)
+          this.loading = false
+          loadingInstance.close()
+        })
+      })
     }
   }
 }
