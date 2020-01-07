@@ -342,6 +342,7 @@ export default {
   },
   computed: {
     ...mapState({
+      cuXMMC: state => state.cuXMMC,
       curContractNo: state => state.curContractNo,
       curDB: state => state.curDB,
       userInfo: state => state.userInfo
@@ -634,7 +635,7 @@ export default {
         tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
         tmpData += '<soap:Body> '
         tmpData += '<JA_LIST xmlns="http://tempuri.org/">'
-        tmpData += "<FSQL>exec [Z_ContractList_detail] '" + this.formFilter.xmmc + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + this.userInfo.fempid + '</FSQL>'
+        tmpData += "<FSQL>exec [Z_ContractList_detail] '" + this.cuXMMC + "','" + this.formFilter.signDepartment + "','" + this.formFilter.customer + "','" + this.formFilter.projectNumber + "'," + contractSumS + ',' + contractSumE + ',' + this.formFilter.signYear + ",'" + this.formFilter.industryType + "','" + this.formFilter.projectType + "','" + this.formFilter.affiliatedCompany + "'," + this.userInfo.fempid + '</FSQL>'
         // tmpData += "<FSQL><![CDATA[SELECT * FROM Z_Contract WHERE  合同号='" + this.curContractNo + "' and 账套名='" + this.curDB + "']]></FSQL>"
         tmpData += '</JA_LIST>'
         tmpData += '</soap:Body>'

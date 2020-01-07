@@ -60,7 +60,7 @@ const state = {
     sort: '按出货率',
     // vagueSearch: ''
     // contractNo: '', // XSHT002089
-    xmmc: 'B17070221ZG1804杨浦区311街坊C3地块及北区综合项目二期改造（复旦管院）', // B17070221ZG1804杨浦区311街坊C3地块及北区综合项目二期改造（复旦管院）
+    xmmc: '', // B17070221ZG1804杨浦区311街坊C3地块及北区综合项目二期改造（复旦管院）
     customer: '',
     projectNumber: ''
   }

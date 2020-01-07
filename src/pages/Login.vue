@@ -87,6 +87,7 @@ export default {
             let cookieStr = CryptoJS.HmacSHA256((this.Form.accountName + this.Form.accountPsd).toString(), '18a808c40bba58c2c')
             setCookie('ZT_18a808c40bba58c2c', cookieStr, 6)
             this.updateUserInfo(Info)
+            console.log(Info)
             this.$router.push({name: 'Index'})
             this.btLoading = false
             break

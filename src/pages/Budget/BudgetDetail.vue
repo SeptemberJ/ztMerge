@@ -1597,7 +1597,6 @@ export default {
         let Result = xmlData.Envelope.Body.JA_LISTResponse.JA_LISTResult
         let Info = JSON.parse(Result)
         console.log('z_finaldetail', Info)
-        
         if (Info.length > 0) {
           console.log('getFinalAccounts', Info)
           this.note['130104'] = Info[0]['外包合同金额']
@@ -1954,7 +1953,7 @@ export default {
             '1801': Info[0]['1801'] > 0 ? Info[0]['1801'] : ''
           }
           this.financialData = {
-            '1001': '',
+            '1001': Info[2]['1001'] > 0 ? Info[2]['1001'] : '',
             '100101': Info[2]['1001.01'] > 0 ? Info[2]['1001.01'] : '',
             '100102': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
             '100103': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
@@ -1978,17 +1977,26 @@ export default {
             '140105': Info[2]['1401.05'] > 0 ? Info[2]['1401.05'] : '',
             '140106': Info[2]['1401.06'] > 0 ? Info[2]['1401.06'] : '',
             '1501': '',
-            '150101': Info[2]['1701.01'] > 0 ? Info[2]['1701.01'] : '',
-            '170102': Info[2]['1701.02'] > 0 ? Info[2]['1701.02'] : '',
-            '170103': Info[2]['1701.03'] > 0 ? Info[2]['1701.03'] : '',
-            '170112': Info[2]['1701.12'] > 0 ? Info[2]['1701.12'] : '',
-            '170113': Info[2]['1701.13'] > 0 ? Info[2]['1701.13'] : '',
-            '170114': Info[2]['1701.14'] > 0 ? Info[2]['1701.14'] : '',
-            '170115': Info[2]['1701.15'] > 0 ? Info[2]['1701.15'] : '',
+            '150101': Info[2]['1701.01'],
+            '170102': Info[2]['1701.02'],
+            '170103': Info[2]['1701.03'],
+            '170112': Info[2]['1701.12'],
+            '170113': Info[2]['1701.13'],
+            '170114': Info[2]['1701.14'],
+            '170115': Info[2]['1701.15'],
+            // '150101': Info[2]['1701.01'] > 0 ? Info[2]['1701.01'] : '',
+            // '170102': Info[2]['1701.02'] > 0 ? Info[2]['1701.02'] : '',
+            // '170103': Info[2]['1701.03'] > 0 ? Info[2]['1701.03'] : '',
+            // '170112': Info[2]['1701.12'] > 0 ? Info[2]['1701.12'] : '',
+            // '170113': Info[2]['1701.13'] > 0 ? Info[2]['1701.13'] : '',
+            // '170114': Info[2]['1701.14'] > 0 ? Info[2]['1701.14'] : '',
+            // '170115': Info[2]['1701.15'] > 0 ? Info[2]['1701.15'] : '',
             '1601': '',
             '1701': '',
             '1801': Info[2]['1801'] > 0 ? Info[2]['1801'] : ''
           }
+          console.log('financialData--------------')
+          console.log(this.financialData)
           this.note = {
             '1001': Info[3]['1001'] ? Info[3]['1001'] : '累计开票金额',
             '100101': Info[3]['1001.01'] ? Info[3]['1001.01'] : '累计收款金额',
@@ -2032,7 +2040,7 @@ export default {
           this.changeDepartment(Info[0]['部门'])
           this.changeSalesman(Info[0]['销售员'])
           this.changeProject(Info[0]['项目名称'])
-          this.getFinalAccounts(Info[0].FProjectID)
+          // this.getFinalAccounts(Info[0].FProjectID)
           this.loading = false
         }
       }).catch((error) => {
