@@ -1492,6 +1492,7 @@ export default {
               }
             }
             if (pro === '1001') {
+              this.finalAccounts[proAfter] = (Info[0]['1001.01'] ? Info[0]['1001.01'] : 0) + (Info[0]['1001.02'] ? Info[0]['1001.02'] : 0) + (Info[0]['1001.03'] ? Info[0]['1001.03'] : 0)
               this.financialData[proAfter] = Info[0]['开票金额']
             } else if (pro === '1001.01') {
               this.financialData[proAfter] = Info[0]['收款金额']

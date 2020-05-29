@@ -1574,7 +1574,7 @@ export default {
         '1801': 0
       }
     },
-    getFinalAccounts (FItemID) {
+    getFinalAccounts (FItemID, type) {
       this.InitialFinalAccounts()
       var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
@@ -1598,7 +1598,6 @@ export default {
         let Info = JSON.parse(Result)
         console.log('z_finaldetail', Info)
         if (Info.length > 0) {
-          console.log('getFinalAccounts', Info)
           this.note['130104'] = Info[0]['外包合同金额']
           this.pro.map(pro => {
             let proAfter = pro.replace('.', '')
@@ -1612,6 +1611,7 @@ export default {
               }
             }
             if (pro === '1001') {
+              this.finalAccounts[proAfter] = (Info[0]['1001.01'] ? Info[0]['1001.01'] : 0) + (Info[0]['1001.02'] ? Info[0]['1001.02'] : 0) + (Info[0]['1001.03'] ? Info[0]['1001.03'] : 0)
               this.financialData[proAfter] = Info[0]['开票金额']
             } else if (pro === '1001.01') {
               this.financialData[proAfter] = Info[0]['收款金额']
@@ -1622,7 +1622,13 @@ export default {
             }
           })
         }
-        console.log('finalAccounts', this.finalAccounts)
+        // console.log('financialData--------------')
+        // console.log(this.financialData)
+        // console.log('finalAccounts--------------')
+        // console.log(this.finalAccounts)
+        if (type === 'save') {
+          setTimeout(() => { this.save('formBudget', 'noDisplay') }, 500)
+        }
       }).catch((error) => {
         this.$message({
           message: '接口报错!',
@@ -1631,7 +1637,7 @@ export default {
         console.log(error)
       })
     },
-    save (formName) {
+    save (formName, ifShow) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.btLoading = true
@@ -1710,6 +1716,11 @@ export default {
               '1701.13': (Number(this.finalAccounts['1001']) * this.rateCompany).toFixed(2),
               '1701.14': (Number(this.finalAccounts['1001']) * 0.0003).toFixed(2),
               '1701.15': (Number(this.finalAccounts['1001']) * this.rateManagement).toFixed(2),
+              '1201': this.finalAccounts['1201'],
+              '1301': this.finalAccounts['1301'],
+              '1401': this.finalAccounts['1401'],
+              '1501': this.finalAccounts['1501'],
+              '1601': (Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201']) - Number(this.finalAccounts['1301']) - Number(this.finalAccounts['1401']) - Number(Number(this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(this.finalAccounts['1001']) * this.rateCompany).toFixed(2)) + Number((Number(this.finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(this.finalAccounts['1001']) * this.rateManagement).toFixed(2)))).toFixed(2),
               '1801': !Number(this.finalAccounts['1001']) ? 0 : (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201']) - Number(this.finalAccounts['1301']) - Number(this.finalAccounts['1401']) - Number(Number(this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? ((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number(this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) > 0 ? (Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2) : 0) : 0) + Number((this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))) > 0 ? (this.formBudget.rate === 'A' ? ((Number(this.finalAccounts['1001']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'B' ? ((Number(this.finalAccounts['1001']) / 1.09 * 0.09 - Number(this.finalAccounts['1201']) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : (this.formBudget.rate === 'C' ? (((Number(this.finalAccounts['1001']) - Number(this.finalAccounts['1201'])) / 1.13 * 0.13 - Number(this.finalAccounts['130102']) / 1.09 * 0.09 - Number(this.finalAccounts['130103']) / 1.03 * 0.03).toFixed(2)) * 0.1 : 0))).toFixed(2) : 0) + Number((Number(this.finalAccounts['1001']) * this.rateCompany).toFixed(2)) + Number((Number(this.finalAccounts['1001']) * 0.0003).toFixed(2)) + Number((Number(this.finalAccounts['1001']) * this.rateManagement).toFixed(2)))).toFixed(2)) / Number(this.finalAccounts['1001']) * 1).toFixed(2)
             },
             {
@@ -1775,6 +1786,7 @@ export default {
               '1801': this.note['1801']
             }
           ]}
+          console.log('-----------------------')
           console.log(topData, botData, noteData)
           var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
           tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
@@ -1800,11 +1812,13 @@ export default {
             let Result = xmlData.Envelope.Body.FinalResponse.FinalResult
             let Info = (JSON.parse(Result))[0]
             if (Info.code === '1') {
-              this.$message({
-                message: '修改成功!',
-                type: 'success'
-              })
               this.btLoading = false
+              if (ifShow !== 'noDisplay') {
+                this.$message({
+                  message: '修改成功!',
+                  type: 'success'
+                })
+              }
               // this.updateContractId(Info.ID)
               // this.$router.push({name: 'ContractDetail'})
             } else {
@@ -1827,7 +1841,7 @@ export default {
         }
       })
     },
-    getDetail () {
+    async getDetail () {
       this.loading = true
       var tmpData = '<?xml version="1.0" encoding="utf-8"?>'
       tmpData += '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> '
@@ -1879,43 +1893,6 @@ export default {
             '税率': Info[0]['税率'],
             '利率': Info[0]['利率']
           }
-          console.log(this.formBudget)
-          this.finalAccounts = {
-            '1001': '',
-            '100101': Info[1]['1001.01'],
-            '100102': Info[1]['1001.02'],
-            '100103': Info[1]['1001.03'],
-            '1201': '',
-            '120101': Info[1]['1201.01'],
-            '120102': Info[1]['1201.02'],
-            '120103': Info[1]['1201.03'],
-            '120104': Info[1]['1201.04'],
-            '1301': '',
-            '130101': Info[1]['1301.01'],
-            '130102': Info[1]['1301.02'],
-            '130103': Info[1]['1301.03'],
-            '130104': Info[1]['1301.04'],
-            '130105': Info[1]['1301.05'],
-            '130106': Info[1]['1301.06'],
-            '1401': '',
-            '140101': Info[1]['1401.01'],
-            '140102': Info[1]['1401.02'],
-            '140103': Info[1]['1401.03'],
-            '140104': Info[1]['1401.04'],
-            '140105': Info[1]['1401.05'],
-            '140106': Info[1]['1401.06'],
-            '1501': '',
-            '150101': Info[1]['1701.01'],
-            '170102': Info[1]['1701.02'],
-            '170103': Info[1]['1701.03'],
-            '170112': Info[1]['1701.12'],
-            '170113': Info[1]['1701.13'],
-            '170114': Info[1]['1701.14'],
-            '170115': Info[1]['1701.15'],
-            '1601': '',
-            '1701': '',
-            '1801': Info[0]['1801']
-          }
           this.budget = {
             '1001': '',
             '100101': Info[0]['1001.01'] > 0 ? Info[0]['1001.01'] : '',
@@ -1952,51 +1929,87 @@ export default {
             '1701': '',
             '1801': Info[0]['1801'] > 0 ? Info[0]['1801'] : ''
           }
-          this.financialData = {
-            '1001': Info[2]['1001'] > 0 ? Info[2]['1001'] : '',
-            '100101': Info[2]['1001.01'] > 0 ? Info[2]['1001.01'] : '',
-            '100102': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
-            '100103': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
-            '1201': '',
-            '120101': Info[2]['1201.01'] > 0 ? Info[2]['1201.01'] : '',
-            '120102': Info[2]['1201.02'] > 0 ? Info[2]['1201.02'] : '',
-            '120103': Info[2]['1201.03'] > 0 ? Info[2]['1201.03'] : '',
-            '120104': Info[2]['1201.04'] > 0 ? Info[2]['1201.04'] : '',
-            '1301': '',
-            '130101': Info[2]['1301.01'] > 0 ? Info[2]['1301.01'] : '',
-            '130102': Info[2]['1301.02'] > 0 ? Info[2]['1301.02'] : '',
-            '130103': Info[2]['1301.03'] > 0 ? Info[2]['1301.03'] : '',
-            '130104': Info[2]['1301.04'] > 0 ? Info[2]['1301.04'] : '',
-            '130105': Info[2]['1301.05'] > 0 ? Info[2]['1301.05'] : '',
-            '130106': Info[2]['1301.06'] > 0 ? Info[2]['1301.06'] : '',
-            '1401': '',
-            '140101': Info[2]['1401.01'] > 0 ? Info[2]['1401.01'] : '',
-            '140102': Info[2]['1401.02'] > 0 ? Info[2]['1401.02'] : '',
-            '140103': Info[2]['1401.03'] > 0 ? Info[2]['1401.03'] : '',
-            '140104': Info[2]['1401.04'] > 0 ? Info[2]['1401.04'] : '',
-            '140105': Info[2]['1401.05'] > 0 ? Info[2]['1401.05'] : '',
-            '140106': Info[2]['1401.06'] > 0 ? Info[2]['1401.06'] : '',
-            '1501': '',
-            '150101': Info[2]['1701.01'],
-            '170102': Info[2]['1701.02'],
-            '170103': Info[2]['1701.03'],
-            '170112': Info[2]['1701.12'],
-            '170113': Info[2]['1701.13'],
-            '170114': Info[2]['1701.14'],
-            '170115': Info[2]['1701.15'],
-            // '150101': Info[2]['1701.01'] > 0 ? Info[2]['1701.01'] : '',
-            // '170102': Info[2]['1701.02'] > 0 ? Info[2]['1701.02'] : '',
-            // '170103': Info[2]['1701.03'] > 0 ? Info[2]['1701.03'] : '',
-            // '170112': Info[2]['1701.12'] > 0 ? Info[2]['1701.12'] : '',
-            // '170113': Info[2]['1701.13'] > 0 ? Info[2]['1701.13'] : '',
-            // '170114': Info[2]['1701.14'] > 0 ? Info[2]['1701.14'] : '',
-            // '170115': Info[2]['1701.15'] > 0 ? Info[2]['1701.15'] : '',
-            '1601': '',
-            '1701': '',
-            '1801': Info[2]['1801'] > 0 ? Info[2]['1801'] : ''
-          }
-          console.log('financialData--------------')
-          console.log(this.financialData)
+          // this.finalAccounts = {
+          //   '1001': '',
+          //   '100101': Info[1]['1001.01'],
+          //   '100102': Info[1]['1001.02'],
+          //   '100103': Info[1]['1001.03'],
+          //   '1201': '',
+          //   '120101': Info[1]['1201.01'],
+          //   '120102': Info[1]['1201.02'],
+          //   '120103': Info[1]['1201.03'],
+          //   '120104': Info[1]['1201.04'],
+          //   '1301': '',
+          //   '130101': Info[1]['1301.01'],
+          //   '130102': Info[1]['1301.02'],
+          //   '130103': Info[1]['1301.03'],
+          //   '130104': Info[1]['1301.04'],
+          //   '130105': Info[1]['1301.05'],
+          //   '130106': Info[1]['1301.06'],
+          //   '1401': '',
+          //   '140101': Info[1]['1401.01'],
+          //   '140102': Info[1]['1401.02'],
+          //   '140103': Info[1]['1401.03'],
+          //   '140104': Info[1]['1401.04'],
+          //   '140105': Info[1]['1401.05'],
+          //   '140106': Info[1]['1401.06'],
+          //   '1501': '',
+          //   '150101': Info[1]['1701.01'],
+          //   '170102': Info[1]['1701.02'],
+          //   '170103': Info[1]['1701.03'],
+          //   '170112': Info[1]['1701.12'],
+          //   '170113': Info[1]['1701.13'],
+          //   '170114': Info[1]['1701.14'],
+          //   '170115': Info[1]['1701.15'],
+          //   '1601': '',
+          //   '1701': '',
+          //   '1801': Info[0]['1801']
+          // }
+          // this.financialData = {
+          //   '1001': Info[2]['1001'] > 0 ? Info[2]['1001'] : '',
+          //   '100101': Info[2]['1001.01'] > 0 ? Info[2]['1001.01'] : '',
+          //   '100102': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
+          //   '100103': Info[2]['1001.02'] > 0 ? Info[2]['1001.02'] : '',
+          //   '1201': '',
+          //   '120101': Info[2]['1201.01'] > 0 ? Info[2]['1201.01'] : '',
+          //   '120102': Info[2]['1201.02'] > 0 ? Info[2]['1201.02'] : '',
+          //   '120103': Info[2]['1201.03'] > 0 ? Info[2]['1201.03'] : '',
+          //   '120104': Info[2]['1201.04'] > 0 ? Info[2]['1201.04'] : '',
+          //   '1301': '',
+          //   '130101': Info[2]['1301.01'] > 0 ? Info[2]['1301.01'] : '',
+          //   '130102': Info[2]['1301.02'] > 0 ? Info[2]['1301.02'] : '',
+          //   '130103': Info[2]['1301.03'] > 0 ? Info[2]['1301.03'] : '',
+          //   '130104': Info[2]['1301.04'] > 0 ? Info[2]['1301.04'] : '',
+          //   '130105': Info[2]['1301.05'] > 0 ? Info[2]['1301.05'] : '',
+          //   '130106': Info[2]['1301.06'] > 0 ? Info[2]['1301.06'] : '',
+          //   '1401': '',
+          //   '140101': Info[2]['1401.01'] > 0 ? Info[2]['1401.01'] : '',
+          //   '140102': Info[2]['1401.02'] > 0 ? Info[2]['1401.02'] : '',
+          //   '140103': Info[2]['1401.03'] > 0 ? Info[2]['1401.03'] : '',
+          //   '140104': Info[2]['1401.04'] > 0 ? Info[2]['1401.04'] : '',
+          //   '140105': Info[2]['1401.05'] > 0 ? Info[2]['1401.05'] : '',
+          //   '140106': Info[2]['1401.06'] > 0 ? Info[2]['1401.06'] : '',
+          //   '1501': '',
+          //   '150101': Info[2]['1701.01'],
+          //   '170102': Info[2]['1701.02'],
+          //   '170103': Info[2]['1701.03'],
+          //   '170112': Info[2]['1701.12'],
+          //   '170113': Info[2]['1701.13'],
+          //   '170114': Info[2]['1701.14'],
+          //   '170115': Info[2]['1701.15'],
+          //   // '150101': Info[2]['1701.01'] > 0 ? Info[2]['1701.01'] : '',
+          //   // '170102': Info[2]['1701.02'] > 0 ? Info[2]['1701.02'] : '',
+          //   // '170103': Info[2]['1701.03'] > 0 ? Info[2]['1701.03'] : '',
+          //   // '170112': Info[2]['1701.12'] > 0 ? Info[2]['1701.12'] : '',
+          //   // '170113': Info[2]['1701.13'] > 0 ? Info[2]['1701.13'] : '',
+          //   // '170114': Info[2]['1701.14'] > 0 ? Info[2]['1701.14'] : '',
+          //   // '170115': Info[2]['1701.15'] > 0 ? Info[2]['1701.15'] : '',
+          //   '1601': '',
+          //   '1701': '',
+          //   '1801': Info[2]['1801'] > 0 ? Info[2]['1801'] : ''
+          // }
+          // console.log('financialData--------------')
+          // console.log(this.financialData)
           this.note = {
             '1001': Info[3]['1001'] ? Info[3]['1001'] : '累计开票金额',
             '100101': Info[3]['1001.01'] ? Info[3]['1001.01'] : '累计收款金额',
@@ -2040,7 +2053,7 @@ export default {
           this.changeDepartment(Info[0]['部门'])
           this.changeSalesman(Info[0]['销售员'])
           this.changeProject(Info[0]['项目名称'])
-          // this.getFinalAccounts(Info[0].FProjectID)
+          this.getFinalAccounts(Info[0].FProjectID, 'save')
           this.loading = false
         }
       }).catch((error) => {

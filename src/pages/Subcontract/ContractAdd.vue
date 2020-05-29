@@ -26,7 +26,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="6">
-              <el-form-item label="施工队" prop="constructionTeam">
+              <!-- <el-form-item label="施工队" prop="constructionTeam">
                 <el-select v-model="formContract.constructionTeam" placeholder="请选择所属公司" style="width: 90%;float:left">
                   <el-option
                     v-for="item in constructionTeamList"
@@ -35,9 +35,9 @@
                     :value="item.fitemid">
                   </el-option>
                 </el-select>
-              </el-form-item>
-              <!-- <el-form-item label="施工队" prop="constructionTeam">
-                <el-input v-model="formContract.constructionTeam" clearable placeholder="请输入施工队" style="width: 90%;float:left"></el-input>
+              </el-form-item> -->
+              <el-form-item label="施工队" prop="constructionTeam">
+                <!-- <el-input v-model="formContract.constructionTeam" clearable placeholder="请输入施工队" style="width: 90%;float:left"></el-input> -->
                 <el-select v-model="formContract.constructionTeam" filterable remote :remote-method="changeTeam" placeholder="请输入关键字" style="width: 90%;float:left">
                   <el-option
                     v-for="item in constructionTeamList"
@@ -46,7 +46,7 @@
                     :value="item.fitemid">
                   </el-option>
                 </el-select>
-              </el-form-item> -->
+              </el-form-item>
             </el-col>
             <el-col :span="6">
               <el-form-item label="部门" prop="department">
