@@ -1,28 +1,28 @@
 <template>
 <section>
   <div id="printBox" class="Print" style="background: #fff;">
-    <h2 class="MarginB_20" style="text-align:center;">工程项目预决算表</h2>
+    <h2 class="MarginB_10" style="text-align:center;">工程项目预决算表</h2>
     <section>
       <table id="topInfo" cellspacing="0" class="" style="width: 100%;text-align: left;background: #fff;border: 0px solid #DCDFE6;">
         <tbody>
           <tr>
-            <td width="20%">公司名称：{{formBudget['公司名称']}}</td>
-            <td width="60%">客户名称：{{formBudget['公司名称']}}</td>
-            <td width="20%">公司名称：{{formBudget['公司名称']}}</td>
+            <td width="25%">公司名称：{{formBudget['公司名称']}}</td>
+            <td width="50%">客户名称：{{formBudget['公司名称']}}</td>
+            <td width="25%">公司名称：{{formBudget['公司名称']}}</td>
           </tr>
           <tr>
-            <td width="20%">事业部：{{formBudget['事业部']}}</td>
-            <td width="60%">项目名称：{{formBudget['项目名称']}}</td>
-            <td width="20%">竣工日期：{{formBudget['竣工日期']}}</td>
+            <td width="25%" >事业部：{{formBudget['事业部']}}</td>
+            <td width="50%">项目名称：{{formBudget['项目名称']}}</td>
+            <td width="25%">竣工日期：{{formBudget['竣工日期']}}</td>
           </tr>
           <tr>
-            <td width="20%">销售员：{{formBudget['销售员']}}</td>
-            <td width="60%">项目经理：{{formBudget['项目经理']}}</td>
-            <td width="20%">项目类别：{{formBudget['项目类别']}}</td>
+            <td width="25%">销售员：{{formBudget['销售员']}}</td>
+            <td width="50%">项目经理：{{formBudget['项目经理']}}</td>
+            <td width="25%">项目类别：{{formBudget['项目类别']}}</td>
           </tr>
           <tr>
-            <td width="20%">税率：{{formBudget['税率']}}</td>
-            <td width="60%">利率{{formBudget['利率']}}</td>
+            <td width="25%">税率：{{formBudget['税率']}}</td>
+            <td width="50%">利率{{formBudget['利率']}}</td>
           </tr>
         </tbody>
       </table>
@@ -96,13 +96,20 @@
     <table id="budget" cellspacing="0" class="MarginB_20" style="width: 100%;background: #fff;border-top: 1px solid #DCDFE6;border-left: 1px solid #DCDFE6;">
       <thead>
         <tr>
-          <th width="60px">序号</th>
+          <th width="6%">序号</th>
+          <th width="15%"></th>
+          <th width="17%">分类款项</th>
+          <th width="14%">预算(元）</th>
+          <th width="14%">决算(元)</th>
+          <th width="14%">财务数据</th>
+          <th width="20%">备注</th>
+          <!-- <th width="60px">序号</th>
           <th width="130px"></th>
           <th width="150px">分类款项</th>
           <th width="150px">预算(元）</th>
           <th width="150px">决算（元）</th>
           <th width="150px">财务数据</th>
-          <th>备注</th>
+          <th>备注</th> -->
         </tr>
       </thead>
       <tbody>
@@ -729,11 +736,11 @@ export default {
 
 <style scoped>
 thead{
-  height: 35px;
-  line-height: 35px;
+  height: 25px;
+  line-height: 25px;
 }
 #topInfo tbody td{
-  height: 35px;
+  height: 25px;
 }
 #budget thead tr th{
   border-bottom: 1px solid #DCDFE6;
@@ -741,9 +748,14 @@ thead{
 }
 #budget tbody tr td{
   font-size: 14px;
-  height: 30px;
-  line-height: 30px;
+  height: 25px;
+  line-height: 25px;
   border-bottom: 1px solid #DCDFE6;
   border-right: 1px solid #DCDFE6;
+}
+@media print {
+  td{
+    font-szie: 12px;
+  }
 }
 </style>
